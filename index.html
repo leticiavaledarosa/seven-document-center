@@ -1,5 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Seven Document Center</title>
+<title>Seven Back Office</title>
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
@@ -435,6 +436,90 @@ html[lang=ar] .sec summary{font-size:14px;text-transform:none}
 .spec td:first-child{width:160px;color:var(--s-mute)}
 .l-classic .c1-note p{font-style:italic}
 
+/* two companies, intercompany, security */
+:root{--sgt:#C8161D;--sgt-soft:#FCEAEB;--stl:#0B6E79;--stl-soft:#E2F3F4;--ic:#6B3FA0;--ic-soft:#F1EAF9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--sgt:#F26B70;--sgt-soft:#3A1A1D;--stl:#4CC3CF;--stl-soft:#123236;--ic:#B897E6;--ic-soft:#2A2038}}
+:root[data-theme="dark"]{--sgt:#F26B70;--sgt-soft:#3A1A1D;--stl:#4CC3CF;--stl-soft:#123236;--ic:#B897E6;--ic-soft:#2A2038}
+.co{display:inline-flex;align-items:center;justify-content:center;min-width:38px;padding:2px 7px;border-radius:5px;font:700 11px var(--f-mono);letter-spacing:.04em;color:#fff;white-space:nowrap;direction:ltr}
+.co-sgt{background:var(--sgt)} .co-stl{background:var(--stl)}
+:root:not([data-theme="light"]) .co{color:#fff}
+.ic{display:inline-flex;align-items:center;padding:1px 6px;border-radius:5px;font:700 10.5px var(--f-mono);background:var(--ic-soft);color:var(--ic);border:1px solid var(--ic)}
+.cofilter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.cofilter button{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-2);background:var(--surface);border-radius:10px;padding:8px 14px;font-weight:500}
+.cofilter button[aria-pressed=true]{border-color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg);font-weight:600}
+.cofilter .icbtn b{font-variant-numeric:tabular-nums;color:var(--mute);font-weight:600}
+.stat{cursor:pointer}
+.stat[aria-pressed=true]{border-color:var(--fg);box-shadow:inset 0 0 0 1px var(--fg)}
+.doctbl td.prod{max-width:240px;color:var(--fg)}
+.doctbl tbody tr.row-sgt td:first-child{box-shadow:inset 3px 0 0 var(--sgt)}
+.doctbl tbody tr.row-stl td:first-child{box-shadow:inset 3px 0 0 var(--stl)}
+html[dir=rtl] .doctbl tbody tr.row-sgt td:first-child{box-shadow:inset -3px 0 0 var(--sgt)}
+html[dir=rtl] .doctbl tbody tr.row-stl td:first-child{box-shadow:inset -3px 0 0 var(--stl)}
+.tbl-foot{padding:10px 16px;font-size:12.5px;color:var(--mute);border-top:1px solid var(--line)}
+.coband{display:flex;align-items:center;gap:12px;flex-wrap:wrap;border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:14px;border:1px solid}
+.co-b-sgt.coband{background:var(--sgt-soft);border-color:var(--sgt)}
+.co-b-stl.coband{background:var(--stl-soft);border-color:var(--stl)}
+.coband .btn{margin-inline-start:auto}
+.icband{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--ic-soft);color:var(--fg);border:1px solid var(--ic);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:13.5px}
+.errband{background:var(--crit-soft);color:var(--crit);border:1px solid var(--crit);border-radius:10px;padding:10px 14px;margin-bottom:14px;font-size:13.5px;font-weight:500}
+.modal-card.wide{max-width:640px}
+.cocards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cocard{display:flex;flex-direction:column;align-items:flex-start;gap:5px;text-align:start;border:1.5px solid var(--line-2);background:var(--surface);border-radius:12px;padding:14px 16px}
+.cocard:hover:not(:disabled){border-color:var(--mute)}
+.cocard b{font-size:15px}
+.cocard small{color:var(--mute);font-size:12.5px}
+.cocard-top{display:flex;justify-content:space-between;align-items:center;width:100%;margin-bottom:4px}
+.cocard-radio{width:18px;height:18px;border-radius:50%;border:2px solid var(--line-2)}
+.co-b-sgt.cocard[aria-pressed=true]{border-color:var(--sgt);background:var(--sgt-soft)}
+.co-b-stl.cocard[aria-pressed=true]{border-color:var(--stl);background:var(--stl-soft)}
+.co-b-sgt.cocard[aria-pressed=true] .cocard-radio{border:5px solid var(--sgt)}
+.co-b-stl.cocard[aria-pressed=true] .cocard-radio{border:5px solid var(--stl)}
+.cocard:disabled{opacity:.45;cursor:not-allowed}
+.btn:disabled{opacity:.5;cursor:not-allowed;filter:none}
+.arch{margin-top:20px}
+.archb{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;font-size:13px}
+.archb small{display:block;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.archb code{font-family:var(--f-mono);font-size:12.5px;word-break:break-all}
+.subh{font:700 17px var(--f-head);margin:28px 0 10px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:20px}
+.kpi{padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+.kpi small{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.kpi strong{font:800 22px/1.15 var(--f-head);font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;color:var(--mute);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.kpi.warnk strong{color:var(--warn)}
+.layers{list-style:none;margin:0;padding:6px 0}
+.layers li{display:flex;gap:12px;padding:10px 20px;border-bottom:1px solid var(--line)}
+.layers li:last-child{border-bottom:0}
+.layers b{display:block;font-size:13.5px}
+.layers small{color:var(--mute);font-size:12.5px}
+.lyr-ok{flex:0 0 18px;height:18px;border-radius:50%;background:var(--good-soft);border:1.5px solid var(--good);position:relative;margin-top:2px}
+.lyr-ok::after{content:"";position:absolute;left:5px;top:2px;width:4px;height:8px;border:solid var(--good);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.tbl tr.warnrow td{background:var(--warn-soft)}
+.la-eyebrow{font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:#9C9CA4}
+.code-in{font:600 22px var(--f-mono)!important;letter-spacing:.4em!important;text-align:center}
+.mfa-on{display:block;color:var(--good)!important;margin-top:4px}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.cocards,.archb{grid-template-columns:minmax(0,1fr)}.kpis{grid-template-columns:minmax(0,1fr)}.cofilter button{flex:1 1 auto}}
+
+/* self-running demo */
+.tour-bar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:70;width:min(860px,calc(100% - 24px));background:#141416;color:#fff;border-radius:14px;box-shadow:0 18px 48px rgba(0,0,0,.35);overflow:hidden}
+.tour-prog{height:4px;background:#2c2c30}.tour-prog i{display:block;height:100%;background:#E01F26;width:0;transition:width .4s}
+.tour-in{display:flex;align-items:center;gap:16px;padding:14px 18px;flex-wrap:wrap}
+.tour-n{font:600 12px var(--f-mono);color:#9C9CA4;white-space:nowrap}
+.tour-cap{flex:1;min-width:220px;font-size:15px;line-height:1.45;margin:0}
+.tour-ctl{display:flex;gap:8px}
+.tour-bar .btn{background:#2a2a2e;border-color:#3a3a40;color:#fff}.tour-bar .btn.primary{background:#E01F26;border-color:#E01F26}.tour-bar .btn.ghost{background:none;border-color:transparent;color:#C9C9CF}
+.tour-ring{position:fixed;z-index:65;border:3px solid #E01F26;border-radius:12px;box-shadow:0 0 0 9999px rgba(10,10,12,.28);pointer-events:none;transition:opacity .2s}
+.tour-cursor{position:fixed;z-index:66;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:rgba(224,31,38,.85);border:3px solid #fff;box-shadow:0 2px 10px rgba(0,0,0,.4);pointer-events:none;transition:left .45s ease,top .45s ease,transform .15s}
+.tour-cursor.press{transform:scale(.7)}
+body.touring .toast{bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+body.touring .wrap{padding-bottom:140px}
+.play{display:inline-block;width:0;height:0;border-style:solid;border-width:6px 0 6px 10px;border-color:transparent transparent transparent currentColor;margin-inline-end:8px;vertical-align:-1px}
+html[dir=rtl] .play{transform:scaleX(-1)}
+.tourbtn{width:100%;max-width:400px;display:flex;justify-content:center;align-items:center;padding:12px 16px;font-weight:600;font-size:15px}
+.tourlink{color:var(--fg)!important;font-weight:600}
+@media (max-width:1180px){.tourlink{display:none}}
+@media (prefers-reduced-motion:reduce){.tour-ring,.tour-cursor,.tour-prog i{transition:none}}
 .d{direction:ltr;text-align:left}
 .flow{display:flex;flex-direction:column;flex:1 1 auto;min-height:0}
 .d.pg{height:1123px;min-height:0}
@@ -462,7 +547,7 @@ html[lang=ar] .sec summary{font-size:14px;text-transform:none}
 <script>
 (function(){
 const $=s=>document.querySelector(s);
-const KEY='seven-platform-demo-v3';
+const KEY='seven-platform-demo-v4';
 const TODAY=new Date().toISOString().slice(0,10);
 const addDays=(iso,n)=>{const d=new Date(iso+'T12:00');d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
 const uid=()=>Math.random().toString(36).slice(2,10);
@@ -484,14 +569,19 @@ const ROLES={admin:'Approves and issues documents',sales:'Creates drafts, submit
 const AR={'Description':'الوصف','Qty':'الكمية','Unit price':'سعر الوحدة','Total':'الإجمالي','Subtotal':'المجموع الفرعي','Bill to':'فاتورة إلى','To':'إلى','Consignee':'المرسل إليه','Issue date':'تاريخ الإصدار','Due date':'تاريخ الاستحقاق','Valid until':'صالح حتى','Shipment date':'تاريخ الشحن','Amount due':'المبلغ المستحق','Quoted total':'إجمالي العرض','Gross weight':'الوزن الإجمالي','Bank details':'البيانات المصرفية','Payment terms':'شروط الدفع','Price validity':'صلاحية السعر','Price terms':'شروط السعر','Shipment':'الشحن','Port of loading':'ميناء التحميل','Port of discharge':'ميناء التفريغ','Containers / B/L':'الحاويات / بوليصة الشحن','Beneficiary name':'اسم المستفيد','Beneficiary address':'عنوان المستفيد','Bank name':'اسم البنك','SWIFT / BIC':'رمز السويفت','Account number':'رقم الحساب','IBAN':'الآيبان','Currency':'العملة','Number':'الرقم','Packages':'الطرود','Net weight (kg)':'الوزن الصافي (كغ)','Gross weight (kg)':'الوزن الإجمالي (كغ)','Terms & shipment':'الشروط والشحن','Total amount in words':'المبلغ الإجمالي كتابةً','From':'من'};
 
 function seed(){
-  const company={name:'Seven General Trading LLC',tagline:'Building Trust. Delivering Quality.',reg:'1944696',trn:'104160515300003',address:'Office No. 101-12, Latifa Tower, Sheikh Zayed Road\nTrade Center First, Dubai, UAE',phone:'+971 56 685 3333',email:'info@sevengt.com',web:'www.sevengt.com',offices:'USA | KSA | UAE | Egypt',signer:'Mohamed Gaber',signerTitle:'President',logo:'',logoLight:'',
-    bank:{beneficiary:'Seven General Trading LLC',address:'Office No. 101-12, Dubai, UAE',bank:'Your bank name',swift:'XXXXAEAD',account:'0000000000',iban:'AE00 0000 0000 0000 0000 000'}};
-  const users=[{id:'u0',name:'Test Account',role:'admin',title:'Administrator',email:'teste@sevengt.com',pass:'teste123'},{id:'u1',name:'Mohamed Gaber',role:'admin',title:'President',email:'mohamed.gaber@sevengt.com'},{id:'u2',name:'Sara Haddad',role:'sales',title:'Sales Officer',email:'sara.haddad@sevengt.com'},{id:'u3',name:'Omar Khalil',role:'finance',title:'Finance',email:'omar.khalil@sevengt.com'}];
+  const base={tagline:'Building Trust. Delivering Quality.',address:'Office No. 101-12, Latifa Tower, Sheikh Zayed Road\nTrade Center First, Dubai, UAE',phone:'+971 56 685 3333',web:'www.sevengt.com',offices:'USA | KSA | UAE | Egypt',signer:'Mohamed Gaber',signerTitle:'President',logo:'',logoLight:''};
+  const companies=[
+    Object.assign({},base,{id:'sgt',code:'SGT',sub:'General Trading',name:'Seven General Trading LLC',reg:'1944696',trn:'104160515300003',email:'info@sevengt.com',
+      bank:{beneficiary:'Seven General Trading LLC',address:'Office No. 101-12, Dubai, UAE',bank:'Your bank name',swift:'XXXXAEAD',account:'0000000000',iban:'AE00 0000 0000 0000 0000 000'}}),
+    Object.assign({},base,{id:'stl',code:'ST',sub:'Trading',name:'Seven Trading LLC',reg:'Sample 2210457',trn:'Sample 100000000000003',email:'info@sevengt.com',
+      bank:{beneficiary:'Seven Trading LLC',address:'Office No. 101-12, Dubai, UAE',bank:'Second bank (sample)',swift:'YYYYAEAD',account:'1111111111',iban:'AE11 1111 1111 1111 1111 111'}})];
+  const users=[{id:'u0',name:'Test Account',role:'admin',title:'Administrator',email:'teste@sevengt.com',pass:'teste123',mfa:true,last:''},{id:'u1',name:'Mohamed Gaber',role:'admin',title:'President',email:'mohamed.gaber@sevengt.com'},{id:'u2',name:'Sara Haddad',role:'sales',title:'Sales Officer',email:'sara.haddad@sevengt.com'},{id:'u3',name:'Omar Khalil',role:'finance',title:'Finance',email:'omar.khalil@sevengt.com'}];
   const clients=[
     {id:'c1',name:'Al Noor Foodstuff Trading LLC',address:'Warehouse 14, Al Quoz Industrial Area 3\nDubai, UAE',taxLabel:'TRN',taxId:'100234567800003',contact:'purchasing@alnoor-sample.ae',country:'UAE'},
     {id:'c2',name:'Gulf Fresh Distribution Co.',address:'King Fahd Road, Al Olaya\nRiyadh, Saudi Arabia',taxLabel:'VAT No.',taxId:'300123456700003',contact:'imports@gulffresh-sample.sa',country:'KSA'},
     {id:'c3',name:'Nile Valley Imports',address:'15 El Tahrir Street, Dokki\nGiza, Egypt',taxLabel:'Tax ID',taxId:'512-345-678',contact:'orders@nilevalley-sample.eg',country:'Egypt'},
-    {id:'c4',name:'Atlantic Food Partners Inc.',address:'200 Harbor Blvd\nNewark, NJ 07114, USA',taxLabel:'EIN',taxId:'12-3456789',contact:'buying@atlanticfood-sample.com',country:'USA'}];
+    {id:'c4',name:'Atlantic Food Partners Inc.',address:'200 Harbor Blvd\nNewark, NJ 07114, USA',taxLabel:'EIN',taxId:'12-3456789',contact:'buying@atlanticfood-sample.com',country:'USA'},
+    ...companies.map(c=>({id:'g-'+c.id,group:c.id,name:c.name,address:c.address,taxLabel:'TRN',taxId:c.trn,contact:c.email,country:'UAE'}))];
   const products=[
     {id:'p1',desc:'Halal Frozen Whole Chicken without giblets\nGrade A · 1,000–1,100 g · IQF',hs:'0207.12',unit:'MT',price:'1850',pack:10},
     {id:'p2',desc:'Halal Frozen Chicken Gizzards\nCleaned · 10 kg cartons',hs:'0207.14',unit:'MT',price:'1320',pack:10},
@@ -499,28 +589,30 @@ function seed(){
     {id:'p4',desc:'Halal Frozen Chicken Leg Quarters\n15 kg cartons',hs:'0207.14',unit:'MT',price:'1240',pack:15},
     {id:'p5',desc:'Indonesian Green Coffee Beans\nGrade 3, 45 defects · 60 kg bags',hs:'0901.11',unit:'MT',price:'3600',pack:60},
     {id:'p6',desc:'Refined Sugar ICUMSA 45\n50 kg PP bags',hs:'1701.99',unit:'MT',price:'610',pack:50}];
-  const db={v:3,company,users,clients,products,docs:[],seq:{},session:{user:null},ui:{lang:'en'}};
+  const db={v:4,companies,users,clients,products,docs:[],seq:{},session:{user:null},ui:{lang:'en'},audit:[],backups:[],fails:0,lockUntil:0};
   const plan=[
-    ['invoice','c1','2026-05-08',30,[['p1',54]],'paid','classic'],
-    ['invoice','c2','2026-05-21',30,[['p2',27],['p3',27]],'paid','classic'],
-    ['invoice','c3','2026-06-11',30,[['p6',500]],'paid','exec'],
-    ['commercial','c1','2026-06-26',30,[['p1',81]],'paid','letter'],
-    ['invoice','c4','2026-07-09',30,[['p5',38.4]],'paid','classic'],
-    ['invoice','c2','2026-07-30',30,[['p4',54]],'paid','min'],
-    ['commercial','c3','2026-08-14',30,[['p1',27],['p2',27]],'paid','letter'],
-    ['invoice','c1','2026-08-28',30,[['p3',54]],'issued','classic'],
-    ['invoice','c4','2026-09-12',30,[['p5',19.2]],'paid','exec'],
-    ['quotation','c2','2026-09-20',15,[['p1',108]],'issued','side','q1'],
-    ['proforma','c2','2026-09-25',7,[['p1',108]],'issued','bold','pf1','q1'],
-    ['invoice','c1','2026-09-29',30,[['p4',81]],'issued','classic'],
-    ['commercial','c2','2026-10-02',30,[['p1',108]],'issued','letter','ci1','pf1'],
-    ['packing','c2','2026-10-03',0,[['p1',108]],'issued','letter','pl1','ci1'],
-    ['invoice','c3','2026-10-09',30,[['p6',750]],'issued','exec'],
-    ['proforma','c4','2026-10-14',7,[['p5',38.4]],'pending','bold'],
-    ['loi','c1','2026-10-15',15,[['p1',54]],'draft','letter'],
-    ['invoice','c1','2026-10-16',30,[['p2',54]],'draft','classic']];
-  plan.forEach(([type,cid,date,dd,its,status,layout,key,parent])=>{
-    const d=blankDoc(db,type,cid);
+    ['sgt','invoice','c1','2026-05-08',30,[['p1',54]],'paid','classic'],
+    ['sgt','invoice','c2','2026-05-21',30,[['p2',27],['p3',27]],'paid','classic'],
+    ['stl','invoice','c3','2026-06-11',30,[['p6',500]],'paid','exec'],
+    ['sgt','commercial','c1','2026-06-26',30,[['p1',81]],'paid','letter'],
+    ['stl','invoice','c4','2026-07-09',30,[['p5',38.4]],'paid','classic'],
+    ['sgt','invoice','c2','2026-07-30',30,[['p4',54]],'paid','min'],
+    ['stl','proforma','g-sgt','2026-08-06',7,[['p1',54]],'paid','bold'],
+    ['sgt','commercial','c3','2026-08-14',30,[['p1',27],['p2',27]],'paid','letter'],
+    ['sgt','invoice','c1','2026-08-28',30,[['p3',54]],'issued','classic'],
+    ['stl','invoice','c4','2026-09-12',30,[['p5',19.2]],'paid','exec'],
+    ['sgt','quotation','c2','2026-09-20',15,[['p1',108]],'issued','side','q1'],
+    ['sgt','proforma','c2','2026-09-25',7,[['p1',108]],'issued','bold','pf1','q1'],
+    ['sgt','invoice','c1','2026-09-29',30,[['p4',81]],'issued','classic'],
+    ['sgt','commercial','c2','2026-10-02',30,[['p1',108]],'issued','letter','ci1','pf1'],
+    ['sgt','packing','c2','2026-10-03',0,[['p1',108]],'issued','letter','pl1','ci1'],
+    ['stl','invoice','c3','2026-10-09',30,[['p6',750]],'issued','exec'],
+    ['sgt','proforma','g-stl','2026-10-20',7,[['p2',54]],'issued','bold','ic1'],
+    ['stl','proforma','c4','2026-10-22',7,[['p5',38.4]],'pending','bold'],
+    ['sgt','loi','c1','2026-10-24',15,[['p1',54]],'draft','letter'],
+    ['stl','invoice','c1','2026-10-27',30,[['p2',54]],'draft','classic']];
+  plan.forEach(([co,type,cid,date,dd,its,status,layout,key,parent])=>{
+    const d=blankDoc(db,type,cid,co);
     d.id=key||uid();d.date=date;d.due=dd?addDays(date,dd):'';d.layout=layout;d.parentId=parent||null;
     d.items=its.map(([pid,q])=>itemFrom(db.products.find(p=>p.id===pid),q));
     d.terms.containers=type==='packing'||type==='commercial'?'MSKU 482916-3, MSKU 482917-8 · B/L SAN-26-08812':'';
@@ -528,33 +620,44 @@ function seed(){
     d.history=[{at:at('09:10'),user:'u2',a:'created'}];
     if(parent){d.history[0].a='from';d.history[0].x=(db.docs.find(x=>x.id===parent)||{}).number}
     if(status==='pending'){d.history.push({at:at('11:30'),user:'u2',a:'submitted'})}
-    if(['issued','paid'].includes(status)){d.number=assignNumber(db,type,date);d.history.push({at:at('14:05'),user:'u1',a:'issued'})}
+    if(['issued','paid'].includes(status)){d.number=assignNumber(db,d);d.fp=fakeFp(d.id+date);d.history.push({at:at('14:05'),user:'u1',a:'issued'})}
     if(status==='paid'){const pd=addDays(date,Math.min(dd||10,21));d.paidAt=pd;d.history.push({at:new Date(pd+'T10:20:00').toISOString(),user:'u3',a:'paid'})}
-    d.status=status;db.docs.push(d)});
+    d.status=status;db.docs.push(d);
+    d.history.forEach(h=>db.audit.push({at:h.at,user:h.user,a:'doc-'+h.a,x:d.number||DOCS[type].n,co}))});
+  const days=[...Array(8)].map((_,i)=>addDays(TODAY,-i));
+  days.forEach((dd,i)=>{if(i===0)return;db.audit.push({at:new Date(dd+'T07:5'+(i%6)+':00').toISOString(),user:i%2?'u1':'u2',a:'signin',x:'Dubai, UAE'});
+    db.backups.push({at:new Date(dd+'T03:00:00').toISOString(),kind:'auto',size:(4.1+i*0.07).toFixed(1)+' MB',primary:true,offsite:true})});
+  db.audit.push({at:new Date(addDays(TODAY,-3)+'T22:14:00').toISOString(),user:'',a:'signin-failed',x:'unknown@mail.com · Lagos, NG'});
+  db.audit.push({at:new Date(addDays(TODAY,-3)+'T22:15:00').toISOString(),user:'',a:'signin-blocked',x:'5 failed attempts · IP blocked 15 min'});
+  db.restoreTest=new Date(addDays(TODAY,-12)+'T09:00:00').toISOString();
+  db.audit.sort((a,b)=>b.at.localeCompare(a.at));
   return db}
+function fakeFp(s){let h=2166136261;let out='';for(let k=0;k<8;k++){for(let i=0;i<s.length;i++){h^=s.charCodeAt(i)+k;h=Math.imul(h,16777619)>>>0}out+=h.toString(16).padStart(8,'0')}return out}
 
 function defaultTerms(type){
   const t={validity:'This offer is valid for 3 days only. After this period, the price is subject to re-quotation at prevailing market prices.',payment:'100% Advance Payment.',incoterm:'CIF Jebel Ali Port, Dubai (UAE).',shipment:'Partial shipments allowed, two (2) containers per Bill of Lading (B/L).',pol:'Santos, Brazil',pod:'Jebel Ali, UAE',containers:''};
   if(type==='loi'){t.validity='';t.payment='CAD / LC';t.incoterm='CIF Jebel Ali Port, Dubai (UAE)';t.shipment='';t.pol='';t.pod=''}
   return t}
-function blankDoc(db,type,cid){
+function blankDoc(db,type,cid,co){
   const c=db.clients.find(x=>x.id===cid)||{};
-  return{id:uid(),type,number:'',ref:'',date:TODAY,due:type==='packing'?'':addDays(TODAY,type==='quotation'||type==='loi'?15:30),currency:'USD',vat:'0',
+  return{id:uid(),companyId:co||'',type,number:'',ref:'',date:TODAY,due:type==='packing'?'':addDays(TODAY,type==='quotation'||type==='loi'?15:30),currency:'USD',vat:'0',
     clientId:c.id||'',buyer:{name:c.name||'',address:c.address||'',taxLabel:c.taxLabel||'Tax ID',taxId:c.taxId||'',contact:c.contact||''},
     items:[],terms:defaultTerms(type),layout:type==='loi'?'letter':'classic',bilingual:false,showQR:true,showSig:true,showWords:true,watermark:true,
-    note:'This document is issued electronically by Seven General Trading LLC.',
-    loi:{subject:'Letter of Intent to purchase Halal frozen whole chicken without giblets',body:'We, Seven General Trading LLC, hereby confirm our intention to purchase the product described below, under the following terms and conditions.',closing:'This letter is valid for 15 days from the date of issue. We kindly request your Full Corporate Offer (FCO) based on the above.\n\nThis letter expresses the intention to purchase and does not constitute a sales contract. Final terms shall be set out in a sales contract (SPA) signed by both parties.'},
+    note:'',
+    loi:{subject:'Letter of Intent to purchase Halal frozen whole chicken without giblets',body:'We, {company}, hereby confirm our intention to purchase the product described below, under the following terms and conditions.',closing:'This letter is valid for 15 days from the date of issue. We kindly request your Full Corporate Offer (FCO) based on the above.\n\nThis letter expresses the intention to purchase and does not constitute a sales contract. Final terms shall be set out in a sales contract (SPA) signed by both parties.'},
     status:'draft',parentId:null,history:[]}}
 function itemFrom(p,q){const qty=Number(q||1),net=qty*(p.unit==='MT'?1000:1);
   return{desc:p.desc,hs:p.hs,qty:String(qty),unit:p.unit,price:String(p.price),pkgs:String(Math.round(net/(p.pack||10))),net:String(Math.round(net)),gross:String(Math.round(net*1.045))}}
 function roman(n){return['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'][n-1]||''}
-function fmtNumber(seq,type,date){const d=new Date((date||TODAY)+'T12:00');return String(seq).padStart(3,'0')+'/'+DOCS[type].p+'_SGT/'+roman(d.getMonth()+1)+'/'+d.getFullYear()}
-function assignNumber(db,type,date){const y=(date||TODAY).slice(0,4),k=type+'-'+y;db.seq[k]=(db.seq[k]||0)+1;return fmtNumber(db.seq[k],type,date)}
-function nextNumber(type,date){const y=(date||TODAY).slice(0,4);return fmtNumber((DB.seq[type+'-'+y]||0)+1,type,date)}
+function fmtNumber(seq,type,date,code){const d=new Date((date||TODAY)+'T12:00');return String(seq).padStart(3,'0')+'/'+DOCS[type].p+'_'+(code||'SGT')+'/'+roman(d.getMonth()+1)+'/'+d.getFullYear()}
+const coOf=(db,id)=>db.companies.find(c=>c.id===id)||db.companies[0];
+function assignNumber(db,d){const y=(d.date||TODAY).slice(0,4),c=coOf(db,d.companyId),k=c.id+'-'+d.type+'-'+y;db.seq[k]=(db.seq[k]||0)+1;return fmtNumber(db.seq[k],d.type,d.date,c.code)}
+function nextNumber(d){const y=(d.date||TODAY).slice(0,4),c=coOf(DB,d.companyId);return fmtNumber((DB.seq[c.id+'-'+d.type+'-'+y]||0)+1,d.type,d.date,c.code)}
+function nextNumberCo(coId,type){const c=coOf(DB,coId),y=TODAY.slice(0,4);return fmtNumber((DB.seq[c.id+'-'+type+'-'+y]||0)+1,type,TODAY,c.code)}
 
 let DB;
 try{const r=localStorage.getItem(KEY);if(r)DB=JSON.parse(r)}catch(e){}
-if(!DB||DB.v!==3)DB=seed();
+if(!DB||DB.v!==4)DB=seed();
 let saveT;function save(){clearTimeout(saveT);saveT=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify(DB))}catch(e){}},250)}
 const me=()=>DB.users.find(u=>u.id===DB.session.user);
 const role=()=>(me()||{}).role;
@@ -594,7 +697,7 @@ const titleAr=()=>S.bilingual?`<span class="ar-t">${T().ar}</span>`:'';
 const partyL=()=>isLOI()?'To':isPL()?'Consignee':'Bill to';
 const dueL=()=>S.type==='quotation'||isLOI()?'Valid until':isPL()?'Shipment date':'Due date';
 const dueV=st=>S.due?fd(S.due,st):(money()&&S.type!=='quotation'?'Upon receipt':'—');
-const numShown=()=>S.number||nextNumber(S.type,S.date);
+const numShown=()=>S.number||nextNumber(S);
 function calc(){const rows=S.items.map(it=>{const q=num(it.qty),p=num(it.price);return Object.assign({},it,{q,p,t:q*p})});
   const sub=rows.reduce((a,r)=>a+r.t,0),vr=num(S.vat),vat=sub*vr/100;return{rows,sub,vr,vat,total:sub+vat}}
 function pl(){const rows=S.items.map(it=>Object.assign({},it,{q:num(it.qty),pk:num(it.pkgs),nt:num(it.net),gr:num(it.gross)}));
@@ -606,7 +709,7 @@ function headline(){
 function logo(v){
   if(v==='light'){if(CO.logoLight)return `<img class="lg" src="${CO.logoLight}" alt="Seven General Trading">`;if(CO.logo)return `<span class="lg-chip"><img class="lg" style="max-height:52px" src="${CO.logo}" alt="Seven General Trading"></span>`}
   else if(CO.logo)return `<img class="lg" src="${CO.logo}" alt="Seven General Trading">`;
-  return `<div class="wm ${v==='light'?'light':''} ${v==='sm'?'sm':''}"><div class="wm-t">SE<span>V</span>EN</div><div class="wm-s">General Trading</div></div>`}
+  return `<div class="wm ${v==='light'?'light':''} ${v==='sm'?'sm':''}"><div class="wm-t">SE<span>V</span>EN</div><div class="wm-s">${e(CO.sub||'General Trading')}</div></div>`}
 function terms(){const x=S.terms;let l=[['Price validity',x.validity],['Payment terms',x.payment],['Price terms',x.incoterm],['Shipment',x.shipment],['Port of loading',x.pol],['Port of discharge',x.pod],['Containers / B/L',x.containers]];
   if(isPL())l=l.filter(r=>!['Price validity','Payment terms'].includes(r[0]));
   return l.filter(r=>String(r[1]||'').trim())}
@@ -624,7 +727,7 @@ function docTable(cls,inlineFoot){
   const body=C.rows.map((r,i)=>`<tr><td>${i+1}</td><td>${descCell(r)}</td><td class="n">${qf(r.q)}${r.unit?' '+e(r.unit):''}</td><td class="n">${mf(r.p)}</td><td class="n">${mf(r.t)}</td></tr>`).join('');
   const foot=inlineFoot?`<tfoot>${totList(C).map(([k,v])=>`<tr><td colspan="4" class="lab">${k}</td><td class="n">${v}</td></tr>`).join('')}<tr class="tot"><td colspan="4" class="lab">${t('Total')}</td><td class="n">${mf(C.total)}</td></tr></tfoot>`:'';
   return `<table class="${cls}">${thead()}<tbody>${body}</tbody>${foot}</table>`}
-function loiBlock(){return `<p class="loi-b"><b>Subject:</b> ${e(S.loi.subject)}</p><p class="loi-b">Dear Sir or Madam,</p><p class="loi-b">${nl(S.loi.body)}</p>
+function loiBlock(){return `<p class="loi-b"><b>Subject:</b> ${e(S.loi.subject)}</p><p class="loi-b">Dear Sir or Madam,</p><p class="loi-b">${nl(S.loi.body.replace(/\{company\}/g,CO.name))}</p>
   <table class="spec loi-b"><tbody>${S.items.map(it=>`<tr><td>Product</td><td>${nl(it.desc)}${it.hs?`<div class="sub">HS code: ${e(it.hs)}</div>`:''}</td></tr><tr><td>Quantity</td><td>${qf(num(it.qty))} ${e(it.unit)}</td></tr>`).join('')}${terms().map(([k,v])=>`<tr><td>${t(k)}</td><td>${nl(v)}</td></tr>`).join('')}</tbody></table>
   ${S.loi.closing.split(/\n\s*\n/).map(x=>`<p class="loi-b">${nl(x)}</p>`).join('')}`}
 function totList(C){const l=[];if(C.vr){l.push([t('Subtotal'),mf(C.sub)]);l.push([`VAT ${qf(C.vr)}%`,mf(C.vat)])}return l}
@@ -634,17 +737,17 @@ const wordsB=()=>money()&&S.showWords?`<div class="words"><b>${t('Total amount i
 const sig=()=>S.showSig&&CO.signer?`<div class="sig"><i></i><b>${e(CO.signer)}</b>${e(CO.signerTitle)}<br>${e(CO.name)}</div>`:'';
 const stamp=()=>{const s={draft:'DRAFT',pending:'AWAITING APPROVAL',cancelled:'CANCELLED'}[S.status];return s?`<div class="stamp">${s}</div>`:''};
 const qrCache={};
-function qrImg(){const payload=`SEVEN GENERAL TRADING LLC | ${title()} ${S.number||'DRAFT'} | ${S.date} | ${money()?S.currency+' '+mf(calc().total):''}`;
+function qrImg(){const payload=`${CO.name.toUpperCase()} | ${title()} ${S.number||'DRAFT'} | ${S.date} | ${money()?S.currency+' '+mf(calc().total):''}`;
   if(qrCache[payload])return qrCache[payload];
   let h='<div class="qr-ph">QR</div>';
   try{if(window.qrcode){const q=qrcode(0,'M');q.addData(payload);q.make();h=`<img src="${q.createDataURL(4,0)}" alt="Verification QR code">`}}catch(x){}
   return qrCache[payload]=h}
-const noteRow=cls=>`<div class="noterow ${cls||''}" data-keepprev>${S.showQR?`<div class="qr">${qrImg()}<span>Scan to verify<br><b>${e(numShown())}</b></span></div>`:''}<p>${e(S.note)}</p></div>`;
+const noteRow=cls=>`<div class="noterow ${cls||''}" data-keepprev>${S.showQR?`<div class="qr">${qrImg()}<span>Scan to verify<br><b>${e(numShown())}</b></span></div>`:''}<p>${e(S.note||('This document is issued electronically by '+CO.name+'.'))}</p></div>`;
 const ICON={pin:'<svg viewBox="0 0 24 24"><path d="M12 21s-6-6.6-6-11a6 6 0 1 1 12 0c0 4.4-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>',
   mail:'<svg viewBox="0 0 24 24"><rect x="3.5" y="6" width="17" height="12" rx="1.5"/><path d="M4 7l8 6 8-6"/></svg>',
   web:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c3 3.2 3 13.8 0 17M12 3.5c-3 3.2-3 13.8 0 17"/></svg>',
   bld:'<svg viewBox="0 0 24 24"><path d="M5 20.5V5h9v15.5M14 9h5v11.5M3 20.5h18M8 8.5h3M8 12h3M8 15.5h3"/></svg>'};
-const wmText=`<div class="wm"><div class="wm-t">SE<span>V</span>EN</div><div class="wm-s">General Trading</div></div>`;
+const wmText=()=>`<div class="wm"><div class="wm-t">SE<span>V</span>EN</div><div class="wm-s">${e(CO.sub||'General Trading')}</div></div>`;
 
 const L={};
 L.classic=()=>`<div class="d l-classic">${stamp()}
@@ -666,7 +769,7 @@ L.classic=()=>`<div class="d l-classic">${stamp()}
  </div></div>`;
 
 L.letter=()=>`<div class="d l-letter">${stamp()}
- ${S.watermark?`<div class="lh-wmk">${CO.logo?`<img src="${CO.logo}" alt="">`:wmText}</div>`:''}
+ ${S.watermark?`<div class="lh-wmk">${CO.logo?`<img src="${CO.logo}" alt="">`:wmText()}</div>`:''}
  <header class="lh-head">${logo()}<div class="lh-div"></div><div class="lh-name"><b>${e(CO.name).toUpperCase().replace(/ LLC$/,'')}</b><span>${e(CO.tagline)}</span></div></header>
  <div class="lh-stripe"></div>
  <main class="lh-body" data-flow>
@@ -804,7 +907,7 @@ function paginate(host,html){
   if(pages.length>1)pages.forEach((pg,i)=>{const d=document.createElement('div');d.className='pgno';d.textContent=`Page ${i+1} of ${pages.length}`;pg.p.appendChild(d)});
   return pages.length}
 
-function renderDoc(d,layout){S=d;CO=DB.company;return L[layout||d.layout]()}
+function renderDoc(d,layout){S=d;CO=coOf(DB,d.companyId);return L[layout||d.layout]()}
 
 /* ================= i18n ================= */
 const tr=(en,ar)=>DB.ui.lang==='ar'?ar:en;
@@ -817,91 +920,138 @@ const LOC=()=>DB.ui.lang==='ar'?'ar-AE-u-nu-latn':'en-US';
 function ud(iso){if(!iso)return '';return new Date(iso.slice(0,10)+'T12:00').toLocaleDateString(LOC(),{day:'numeric',month:'short',year:'numeric'})}
 function udt(iso){return new Date(iso).toLocaleString(LOC(),{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})}
 const LN={classic:['Classic','كلاسيكي'],letter:['Letterhead','الورق الرسمي'],exec:['Executive','تنفيذي'],min:['Minimal','بسيط'],side:['Sidebar','شريط جانبي'],bold:['Statement','كشف']};
-function hx(h){const x=h.x?bd(h.x):'';return({created:tr('Created draft','أنشأ مسودة'),from:tr('Created from ','أنشأ من ')+x,submitted:tr('Submitted for approval','أرسل للموافقة'),issued:tr('Approved and issued','وافق وأصدر'),paid:tr('Recorded payment','سجّل الدفع'),cancelled:tr('Cancelled the document','ألغى المستند'),emailed:tr('Emailed to ','أرسل بالبريد إلى ')+x,converted:tr('Converted to ','حوّل إلى ')+(h.x&&DOCS[h.x]?dn(h.x):''),duplicated:tr('Duplicated from ','نسخ من ')+x}[h.a]||e(h.a))}
+function hx(h){const x=h.x?bd(h.x):'';return({created:tr('Created draft','أنشأ مسودة'),from:tr('Created from ','أنشأ من ')+x,submitted:tr('Submitted for approval','أرسل للموافقة'),issued:tr('Approved, issued and archived','وافق وأصدر وأرشف'),paid:tr('Recorded payment','سجّل الدفع'),cancelled:tr('Cancelled the document','ألغى المستند'),emailed:tr('Emailed to ','أرسل بالبريد إلى ')+x,converted:tr('Converted to ','حوّل إلى ')+(h.x&&DOCS[h.x]?dn(h.x):''),duplicated:tr('Duplicated from ','نسخ من ')+x,company:tr('Changed issuing company to ','غيّر الشركة المُصدِرة إلى ')+x}[h.a]||e(h.a))}
 const partyLU=ty=>ty==='loi'?tr('To','إلى'):ty==='packing'?tr('Consignee','المرسل إليه'):tr('Bill to','فاتورة إلى');
 const dueLU=ty=>ty==='quotation'||ty==='loi'?tr('Valid until','صالح حتى'):ty==='packing'?tr('Shipment date','تاريخ الشحن'):tr('Due date','تاريخ الاستحقاق');
+const COS=()=>DB.companies;
+const coName=id=>coOf(DB,id).name;
+const coTag=id=>{const c=coOf(DB,id);return `<span class="co co-${c.id}" title="${e(c.name)}">${e(c.code)}</span>`};
+const groupOf=d=>{const c=DB.clients.find(x=>x.id===d.clientId);return c&&c.group?c.group:''};
+const isIC=d=>!!groupOf(d)&&groupOf(d)!==d.companyId;
+const isSame=d=>!!groupOf(d)&&groupOf(d)===d.companyId;
+const prodOf=d=>{if(!d.items.length)return '—';const f=d.items[0].desc.split('\n')[0];return d.items.length>1?`${e(f)} <span class="muted">+${d.items.length-1}</span>`:e(f)};
+function audit(a,x,u){DB.audit.unshift({at:new Date().toISOString(),user:u===undefined?DB.session.user:u,a,x:x||''});DB.audit.length=Math.min(DB.audit.length,400)}
+function AX(a){return({signin:tr('Signed in','تسجيل دخول'),'signin-failed':tr('Failed sign-in','محاولة دخول فاشلة'),'signin-blocked':tr('Sign-in blocked','حظر تسجيل الدخول'),'2fa-failed':tr('Wrong verification code','رمز تحقق خاطئ'),signout:tr('Signed out','تسجيل خروج'),timeout:tr('Session ended (inactive)','انتهت الجلسة لعدم النشاط'),backup:tr('Manual backup','نسخة احتياطية يدوية'),restore:tr('Restore test passed','نجاح اختبار الاستعادة'),invite:tr('Invited user','دعوة مستخدم'),settings:tr('Changed company settings','تعديل إعدادات الشركة'),'doc-created':tr('Created draft','إنشاء مسودة'),'doc-from':tr('Created from another document','إنشاء من مستند آخر'),'doc-submitted':tr('Submitted for approval','إرسال للموافقة'),'doc-issued':tr('Issued and archived','إصدار وأرشفة'),'doc-paid':tr('Recorded payment','تسجيل دفع'),'doc-cancelled':tr('Cancelled document','إلغاء مستند'),'doc-emailed':tr('Emailed document','إرسال مستند'),'doc-converted':tr('Converted document','تحويل مستند'),'doc-duplicated':tr('Duplicated document','نسخ مستند'),'doc-company':tr('Changed issuing company','تغيير الشركة المُصدِرة')}[a]||a)}
 
 /* ================= shell ================= */
-let view='documents',curId=null,docFilter={type:'all',status:'all',q:''},editClient=null,editProduct=null,vQuery='',vResult=null,loginErr='',menu='';
+let view='documents',curId=null,docFilter={co:'all',ic:false,type:'all',status:'all',q:''},editClient=null,editProduct=null,vQuery='',vResult=null,loginErr='',menu='',loginStep='pass',pendingUser=null,setCo='sgt',newDlg=null;
 function toast(msg){const el=$('#toast');el.textContent=msg;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,2800)}
-function log(d,a,x){d.history.push({at:new Date().toISOString(),user:DB.session.user,a,x:x||''})}
-function applyLang(){const h=document.documentElement;h.lang=DB.ui.lang;h.dir=DB.ui.lang==='ar'?'rtl':'ltr';document.title=tr('Seven Document Center','مركز مستندات سفن')}
+function log(d,a,x){d.history.push({at:new Date().toISOString(),user:DB.session.user,a,x:x||''});audit('doc-'+a,d.number||DOCS[d.type].n)}
+function applyLang(){const h=document.documentElement;h.lang=DB.ui.lang;h.dir=DB.ui.lang==='ar'?'rtl':'ltr';document.title=tr('Seven Back Office','المكتب الخلفي لسفن')}
 const langSwitch=()=>`<div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="${DB.ui.lang==='en'}">EN</button><button type="button" data-lang="ar" aria-pressed="${DB.ui.lang==='ar'}">العربية</button></div>`;
 const brandMark=light=>`<span class="bm ${light?'light':''}"><span class="bm-w">SE<span>V</span>EN</span><span class="bm-s">General Trading</span></span>`;
+const G=()=>DB.companies[0];
 
 function renderLogin(){
   $('#shell').hidden=true;$('#login').hidden=false;
-  $('#login').innerHTML=`<section class="login-art gut">
-    <div>${DB.company.logoLight?`<img src="${DB.company.logoLight}" alt="Seven General Trading" style="max-height:52px">`:brandMark(true)}</div>
-    <div class="la-mid"><h1>${tr('Trade documents, issued with confidence.','مستندات تجارية تصدر بثقة.')}</h1>
-     <ul><li>${tr('Invoices, proformas, packing lists and letters of intent in Seven’s own format','الفواتير والفواتير المبدئية وقوائم التعبئة وخطابات النوايا بتصميم سفن')}</li>
-      <li>${tr('Every document is approved before it is issued','يُعتمد كل مستند قبل إصداره')}</li>
-      <li>${tr('A QR code on every document lets buyers confirm it is genuine','رمز QR على كل مستند يتيح للمشتري التأكد من صحته')}</li></ul></div>
-    <div class="la-foot">USA · KSA · UAE · EGYPT</div>
-   </section>
-   <section class="login-side gut"><div class="login-lang">${langSwitch()}</div>
-    <form class="login-card" id="loginForm" novalidate>
-     <h2>${tr('Sign in','تسجيل الدخول')}</h2><p>${tr('Use your Seven work email and password.','استخدم بريد العمل وكلمة المرور الخاصة بك في سفن.')}</p>
-     <div class="f"><label for="l-email">${tr('Email','البريد الإلكتروني')}</label><input type="email" id="l-email" autocomplete="username" dir="ltr" placeholder="name@sevengt.com"></div>
-     <div class="f"><label for="l-pass">${tr('Password','كلمة المرور')}</label><input type="password" id="l-pass" autocomplete="current-password" dir="ltr"></div>
+  const locked=DB.lockUntil&&Date.now()<DB.lockUntil;
+  const form=loginStep==='code'?`
+     <h2>${tr('Two-step verification','التحقق بخطوتين')}</h2><p>${tr('Enter the 6-digit code from the authenticator app on your phone.','أدخل الرمز المكوّن من 6 أرقام من تطبيق المصادقة على هاتفك.')}</p>
+     <div class="f"><label for="l-code">${tr('Verification code','رمز التحقق')}</label><input type="text" id="l-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" dir="ltr" class="code-in" placeholder="000000"></div>
      ${loginErr?`<p class="err" role="alert">${loginErr}</p>`:''}
-     <div class="lrow"><label class="chk"><input type="checkbox" id="l-rem" checked> ${tr('Keep me signed in','تذكرني')}</label><button type="button" class="link" data-act="forgot">${tr('Forgot password?','نسيت كلمة المرور؟')}</button></div>
-     <button class="btn primary big" type="submit">${tr('Sign in','تسجيل الدخول')}</button>
+     <button class="btn primary big" type="submit">${tr('Verify and sign in','تحقق وسجّل الدخول')}</button>
+     <button type="button" class="link" style="align-self:flex-start" data-act="backlogin">${tr('Use a different account','استخدام حساب آخر')}</button>
+     <div class="demo"><b>${tr('Test access','دخول تجريبي')}</b><span>${tr('Code','الرمز')}: <code dir="ltr">123456</code></span></div>`:`
+     <h2>${tr('Sign in','تسجيل الدخول')}</h2><p>${tr('Use your Seven work email and password.','استخدم بريد العمل وكلمة المرور الخاصة بك في سفن.')}</p>
+     <div class="f"><label for="l-email">${tr('Email','البريد الإلكتروني')}</label><input type="email" id="l-email" autocomplete="username" dir="ltr" placeholder="name@sevengt.com" ${locked?'disabled':''}></div>
+     <div class="f"><label for="l-pass">${tr('Password','كلمة المرور')}</label><input type="password" id="l-pass" autocomplete="current-password" dir="ltr" ${locked?'disabled':''}></div>
+     ${locked?`<p class="err" role="alert">${tr('Too many failed attempts. Sign-in is blocked for 15 minutes for your protection.','محاولات فاشلة كثيرة. تم حظر تسجيل الدخول لمدة 15 دقيقة لحمايتك.')} <button type="button" class="link" data-act="unlock">${tr('Unlock (demo)','إلغاء الحظر (تجريبي)')}</button></p>`:loginErr?`<p class="err" role="alert">${loginErr}</p>`:''}
+     <div class="lrow"><label class="chk"><input type="checkbox" id="l-rem"> ${tr('Trust this device for 30 days','الوثوق بهذا الجهاز لمدة 30 يومًا')}</label><button type="button" class="link" data-act="forgot">${tr('Forgot password?','نسيت كلمة المرور؟')}</button></div>
+     <button class="btn primary big" type="submit" ${locked?'disabled':''}>${tr('Continue','متابعة')}</button>
      <div class="demo"><b>${tr('Test access','دخول تجريبي')}</b>
       <span>${tr('Email','البريد الإلكتروني')}: <code dir="ltr">teste@sevengt.com</code></span>
       <span>${tr('Password','كلمة المرور')}: <code dir="ltr">teste123</code></span>
-      <button type="button" class="link" style="align-self:flex-start" data-act="demofill">${tr('Fill in the test account','تعبئة الحساب التجريبي')}</button></div>
-    </form>
-    <p class="login-legal">© 2026 Seven General Trading LLC · Dubai, UAE</p>
-   </section>`}
+      <span>${tr('Verification code','رمز التحقق')}: <code dir="ltr">123456</code></span>
+      <button type="button" class="link" style="align-self:flex-start" data-act="demofill">${tr('Fill in the test account','تعبئة الحساب التجريبي')}</button></div>`;
+  $('#login').innerHTML=`<section class="login-art gut">
+    <div>${G().logoLight?`<img src="${G().logoLight}" alt="Seven" style="max-height:52px">`:brandMark(true)}</div>
+    <div class="la-mid"><p class="la-eyebrow">${tr('Back office','المكتب الخلفي')} · <span dir="ltr">backoffice.sevengt.com</span></p><h1>${tr('Trade documents, issued with confidence.','مستندات تجارية تصدر بثقة.')}</h1>
+     <ul><li>${tr('Seven General Trading LLC and Seven Trading LLC in one place, never mixed up','سفن للتجارة العامة وسفن للتجارة في مكان واحد دون أي خلط')}</li>
+      <li>${tr('Every document is approved, archived and backed up','كل مستند يُعتمد ويُؤرشف ويُنسخ احتياطيًا')}</li>
+      <li>${tr('Access by invitation only, with two-step verification','الدخول بدعوة فقط مع التحقق بخطوتين')}</li></ul></div>
+    <div class="la-foot">USA · KSA · UAE · EGYPT</div>
+   </section>
+   <section class="login-side gut"><div class="login-lang">${langSwitch()}</div>
+    <form class="login-card" id="loginForm" novalidate>${form}</form>
+    ${TOUR.on?'':`<button type="button" class="btn tourbtn" data-act="tourstart"><span class="play" aria-hidden="true"></span>${tr('Watch the demo (2 min)','شاهد العرض (دقيقتان)')}</button>`}
+    <p class="login-legal">${tr('Authorized personnel only. Every access is recorded.','للموظفين المصرّح لهم فقط. يتم تسجيل كل دخول.')}</p>
+   </section>`;
+  setTimeout(()=>{const f=$(loginStep==='code'?'#l-code':'#l-email');if(f&&!f.disabled)f.focus()},20)}
 
-const TABS=[['documents','Documents','المستندات'],['clients','Clients','العملاء'],['products','Products','المنتجات'],['verify','Verify','التحقق'],['settings','Settings','الإعدادات']];
+const TABS=[['documents','Documents','المستندات'],['clients','Clients','العملاء'],['products','Products','المنتجات'],['verify','Verify','التحقق'],['security','Security','الأمان',1],['settings','Settings','الإعدادات']];
 function renderTop(){const u=me();
   $('#top').innerHTML=`<div class="top-in gut">
-   <a class="brand" href="#" data-nav="documents" aria-label="Seven General Trading">${DB.company.logo?`<img src="${DB.company.logo}" alt="Seven General Trading">`:brandMark()}<span class="brand-sep"></span><span class="brand-app">${tr('Document Center','مركز المستندات')}</span></a>
-   <nav class="tabs" aria-label="${tr('Main','الرئيسية')}">${TABS.map(([k,en,ar])=>`<button class="tab" type="button" data-nav="${k}" ${(view===k||(k==='documents'&&view==='editor'))?'aria-current="page"':''}>${tr(en,ar)}</button>`).join('')}</nav>
-   <div class="top-r">${langSwitch()}
-    ${role()!=='finance'?`<div class="pop"><button class="btn primary" type="button" data-act="newmenu" aria-haspopup="menu" aria-expanded="${menu==='new'}">${tr('New document','مستند جديد')}</button>
-     ${menu==='new'?`<div class="menu" role="menu"><div class="menu-l">${tr('Choose a document type','اختر نوع المستند')}</div>${Object.keys(DOCS).map(k=>`<button type="button" role="menuitem" data-new="${k}">${dn(k)}</button>`).join('')}</div>`:''}</div>`:''}
+   <a class="brand" href="#" data-nav="documents" aria-label="Seven">${G().logo?`<img src="${G().logo}" alt="Seven">`:brandMark()}<span class="brand-sep"></span><span class="brand-app">${tr('Back Office','المكتب الخلفي')}</span></a>
+   <nav class="tabs" aria-label="${tr('Main','الرئيسية')}">${TABS.filter(t=>!t[3]||role()==='admin').map(([k,en,ar])=>`<button class="tab" type="button" data-nav="${k}" ${(view===k||(k==='documents'&&view==='editor'))?'aria-current="page"':''}>${tr(en,ar)}</button>`).join('')}</nav>
+   <div class="top-r">${TOUR.on?'':`<button class="btn ghost tourlink" type="button" data-act="tourstart"><span class="play" aria-hidden="true"></span>${tr('Watch demo','شاهد العرض')}</button>`}${langSwitch()}
+    ${role()!=='finance'?`<button class="btn primary" type="button" data-act="newdoc">${tr('New document','مستند جديد')}</button>`:''}
     <div class="pop"><button class="um-btn" type="button" data-act="usermenu" aria-haspopup="menu" aria-expanded="${menu==='user'}"><span class="av">${initials(u.name)}</span><span class="um-t"><b>${e(u.name)}</b><small>${roleName(u.role)}</small></span></button>
-     ${menu==='user'?`<div class="menu" role="menu"><div class="menu-h"><b>${e(u.name)}</b><small dir="ltr">${e(u.email)}</small></div><button type="button" role="menuitem" data-act="logout">${tr('Sign out','تسجيل الخروج')}</button></div>`:''}</div>
+     ${menu==='user'?`<div class="menu" role="menu"><div class="menu-h"><b>${e(u.name)}</b><small dir="ltr">${e(u.email)}</small><small class="mfa-on">${tr('Two-step verification on','التحقق بخطوتين مفعّل')}</small></div><button type="button" role="menuitem" data-act="logout">${tr('Sign out','تسجيل الخروج')}</button></div>`:''}</div>
    </div></div>`}
 function render(){applyLang();
   if(!me()){renderLogin();save();return}
   $('#login').hidden=true;$('#shell').hidden=false;
+  if(view==='security'&&role()!=='admin')view='documents';
   renderTop();
-  const V={documents:vDocuments,editor:vEditor,clients:vClients,products:vProducts,verify:vVerify,settings:vSettings}[view]||vDocuments;
+  const V={documents:vDocuments,editor:vEditor,clients:vClients,products:vProducts,verify:vVerify,security:vSecurity,settings:vSettings}[view]||vDocuments;
   $('#main').innerHTML=V();
-  $('#foot').innerHTML=`<span>© 2026 Seven General Trading LLC · Dubai, UAE</span><span>${tr('Demo environment · clients and amounts are samples','بيئة تجريبية · العملاء والمبالغ للعرض فقط')}</span>`;
+  $('#foot').innerHTML=`<span><span dir="ltr">backoffice.sevengt.com</span> · © 2026 Seven General Trading LLC · Seven Trading LLC</span><span>${tr('Demo: data is kept in this browser. The live version uses an encrypted cloud database.','نسخة تجريبية: تُحفظ البيانات في هذا المتصفح. النسخة الفعلية تستخدم قاعدة بيانات سحابية مشفّرة.')}</span>`;
   if(view==='editor')afterEditor();
   save()}
 function go(v,arg){view=v;menu='';if(v==='editor')curId=arg;render();window.scrollTo(0,0)}
 
+/* ================= new document dialog ================= */
+function openNew(){if(role()==='finance')return;newDlg={co:'',type:'invoice'};renderNew()}
+function coCard(c,sel,disabled){return `<button type="button" class="cocard co-b-${c.id}" data-pickco="${c.id}" aria-pressed="${sel}" ${disabled?'disabled':''}>
+   <span class="cocard-top"><span class="co co-${c.id}">${e(c.code)}</span><span class="cocard-radio" aria-hidden="true"></span></span>
+   <b>${e(c.name)}</b><small dir="ltr">TRN ${e(c.trn)}</small><small>${tr('Numbers like','أرقام مثل')} <bdi dir="ltr" class="mono">${e(nextNumberCo(c.id,newDlg?newDlg.type:'invoice'))}</bdi></small></button>`}
+function renderNew(){const n=newDlg;
+  $('#modal').hidden=false;
+  $('#modal').innerHTML=`<div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="nh"><h2 id="nh">${tr('New document','مستند جديد')}</h2>
+   <div class="f"><span class="lab">${tr('1. Which company is issuing this document?','١. أي شركة تُصدر هذا المستند؟')}</span>
+    <div class="cocards">${COS().map(c=>coCard(c,n.co===c.id)).join('')}</div>
+    ${!n.co?`<p class="hint">${tr('Choose a company. There is no default, so a document is never issued by the wrong one.','اختر الشركة. لا يوجد اختيار افتراضي حتى لا يصدر مستند باسم الشركة الخطأ.')}</p>`:''}</div>
+   <div class="f"><label for="n-type">${tr('2. Document type','٢. نوع المستند')}</label><select id="n-type">${Object.keys(DOCS).map(k=>`<option value="${k}" ${k===n.type?'selected':''}>${dn(k)}</option>`).join('')}</select></div>
+   <div class="actions"><button class="btn primary" type="button" data-act="createdoc" ${n.co?'':'disabled'}>${n.co?tr('Create as ','إنشاء باسم ')+e(coName(n.co)):tr('Choose a company first','اختر الشركة أولًا')}</button><button class="btn" type="button" data-act="closemodal">${tr('Cancel','إلغاء')}</button></div></div>`}
+function companyModal(d){newDlg={co:'',change:true,type:d.type};
+  $('#modal').hidden=false;
+  $('#modal').innerHTML=`<div class="modal-card wide" role="dialog" aria-modal="true" aria-labelledby="ch"><h2 id="ch">${tr('Change issuing company','تغيير الشركة المُصدِرة')}</h2>
+   <p class="muted">${tr('The number, logo, legal details and bank account will follow the new company.','سيتغير الرقم والشعار والبيانات القانونية والحساب البنكي حسب الشركة الجديدة.')}</p>
+   <div class="cocards">${COS().map(c=>coCard(c,false,c.id===d.companyId)).join('')}</div>
+   <div class="actions"><button class="btn" type="button" data-act="closemodal">${tr('Keep ','الإبقاء على ')}${e(coName(d.companyId))}</button></div></div>`}
+
 /* ================= documents ================= */
 function vDocuments(){
   const f=docFilter,q=f.q.toLowerCase();
-  const list=DB.docs.filter(d=>(f.type==='all'||d.type===f.type)&&(f.status==='all'||statusOf(d)===f.status)&&(!q||(d.number+' '+d.buyer.name+' '+d.items.map(i=>i.desc).join(' ')).toLowerCase().includes(q))).sort((a,b)=>b.date.localeCompare(a.date)||b.history[0].at.localeCompare(a.history[0].at));
-  const cnt=s=>DB.docs.filter(d=>statusOf(d)===s).length;
+  const base=DB.docs.filter(d=>(f.co==='all'||d.companyId===f.co)&&(!f.ic||isIC(d)));
+  const list=base.filter(d=>(f.type==='all'||d.type===f.type)&&(f.status==='all'||statusOf(d)===f.status)&&(!q||(d.number+' '+d.buyer.name+' '+coName(d.companyId)+' '+d.items.map(i=>i.desc).join(' ')).toLowerCase().includes(q))).sort((a,b)=>b.date.localeCompare(a.date)||b.history[0].at.localeCompare(a.history[0].at));
+  const cnt=s=>base.filter(d=>statusOf(d)===s).length;
   const st=[['pending',tr('Awaiting approval','بانتظار الموافقة'),'warn'],['draft',tr('Drafts','مسودات'),''],['issued',tr('Issued, unpaid','صادرة غير مدفوعة'),''],['overdue',tr('Overdue','متأخرة السداد'),'crit']];
-  return `<div class="page-h"><div><h1>${tr('Documents','المستندات')}</h1><p>${tr('Every document issued by Seven, with its status and history.','جميع المستندات الصادرة عن سفن مع حالتها وسجلها.')}</p></div></div>
-  <div class="stats">${st.map(([k,l,c])=>`<button type="button" class="stat ${cnt(k)&&c?c:''}" data-fs="${k}"><b>${cnt(k)}</b>${l}</button>`).join('')}</div>
+  const icN=DB.docs.filter(isIC).length;
+  return `<div class="page-h"><div><h1>${tr('Documents','المستندات')}</h1><p>${tr('Every document issued by both Seven companies, with its status and history.','جميع المستندات الصادرة عن شركتي سفن مع حالتها وسجلها.')}</p></div></div>
+  <div class="cofilter" role="group" aria-label="${tr('Company','الشركة')}">
+   <button type="button" data-fco="all" aria-pressed="${f.co==='all'}">${tr('Both companies','الشركتان')}</button>
+   ${COS().map(c=>`<button type="button" data-fco="${c.id}" aria-pressed="${f.co===c.id}"><span class="co co-${c.id}">${e(c.code)}</span>${e(c.name)}</button>`).join('')}
+   <button type="button" class="icbtn" data-act="ictoggle" aria-pressed="${f.ic}"><span class="ic">IC</span>${tr('Between Seven companies','بين شركتي سفن')} <b>${icN}</b></button>
+  </div>
+  <div class="stats">${st.map(([k,l,c])=>`<button type="button" class="stat ${cnt(k)&&c?c:''}" data-fs="${k}" aria-pressed="${f.status===k}"><b>${cnt(k)}</b>${l}</button>`).join('')}</div>
   <div class="card"><div class="filters">
-   <div class="seg">${[['all',tr('All','الكل')],...Object.keys(DOCS).map(k=>[k,dn(k)])].map(([k,l])=>`<button type="button" data-ft="${k}" aria-pressed="${f.type===k}">${l}</button>`).join('')}</div>
+   <div class="seg">${[['all',tr('All types','كل الأنواع')],...Object.keys(DOCS).map(k=>[k,dn(k)])].map(([k,l])=>`<button type="button" data-ft="${k}" aria-pressed="${f.type===k}">${l}</button>`).join('')}</div>
    <select id="fStatus" aria-label="${tr('Status','الحالة')}">${[['all',tr('Any status','أي حالة')],...['draft','pending','issued','paid','overdue','cancelled'].map(s=>[s,stl(s)])].map(([k,l])=>`<option value="${k}" ${f.status===k?'selected':''}>${l}</option>`).join('')}</select>
    <input id="fQ" type="text" placeholder="${tr('Search number, client or product','ابحث بالرقم أو العميل أو المنتج')}" value="${e(f.q)}" aria-label="${tr('Search','بحث')}">
   </div>
-  <div class="tw"><table class="tbl"><thead><tr><th>${tr('Number','الرقم')}</th><th>${tr('Type','النوع')}</th><th>${tr('Client','العميل')}</th><th>${tr('Date','التاريخ')}</th><th class="n">${tr('Amount','المبلغ')}</th><th>${tr('Status','الحالة')}</th></tr></thead><tbody>
-  ${list.map(d=>`<tr class="click" data-open="${d.id}"><td class="mono">${d.number?bd(d.number):`<span class="muted" style="font-family:var(--f-ui)">${tr('Not numbered yet','لم يُرقّم بعد')}</span>`}</td><td>${dn(d.type)}${d.parentId?`<span class="sub">${tr('from','من')} ${bd((DB.docs.find(x=>x.id===d.parentId)||{}).number||'')}</span>`:''}</td><td>${d.buyer.name?bn(d.buyer.name):'<span class="muted">—</span>'}</td><td style="white-space:nowrap">${ud(d.date)}</td><td class="n">${DOCS[d.type].money?bd(d.currency+' '+mf(totalOf(d))):'—'}</td><td>${chip(d)}</td></tr>`).join('')||`<tr><td colspan="6" class="muted" style="padding:20px 16px">${tr('No documents match these filters.','لا توجد مستندات مطابقة لهذه الفلاتر.')}</td></tr>`}
-  </tbody></table></div></div>`}
+  <div class="tw"><table class="tbl doctbl"><thead><tr><th>${tr('Company','الشركة')}</th><th>${tr('Number','الرقم')}</th><th>${tr('Type','النوع')}</th><th>${tr('Client','العميل')}</th><th>${tr('Product','المنتج')}</th><th>${tr('Date','التاريخ')}</th><th class="n">${tr('Amount','المبلغ')}</th><th>${tr('Status','الحالة')}</th></tr></thead><tbody>
+  ${list.map(d=>`<tr class="click row-${d.companyId}" data-open="${d.id}"><td>${coTag(d.companyId)}</td><td class="mono">${d.number?bd(d.number):`<span class="muted" style="font-family:var(--f-ui)">${tr('Not numbered yet','لم يُرقّم بعد')}</span>`}</td><td>${dn(d.type)}${d.parentId?`<span class="sub">${tr('from','من')} ${bd((DB.docs.find(x=>x.id===d.parentId)||{}).number||'')}</span>`:''}</td><td>${d.buyer.name?bn(d.buyer.name):'<span class="muted">—</span>'}${isIC(d)?`<span class="sub"><span class="ic">IC</span> ${tr('Between Seven companies','بين شركتي سفن')}</span>`:''}</td><td class="prod">${prodOf(d)}</td><td style="white-space:nowrap">${ud(d.date)}</td><td class="n">${DOCS[d.type].money?bd(d.currency+' '+mf(totalOf(d))):'—'}</td><td>${chip(d)}</td></tr>`).join('')||`<tr><td colspan="8" class="muted" style="padding:20px 16px">${tr('No documents match these filters.','لا توجد مستندات مطابقة لهذه الفلاتر.')}</td></tr>`}
+  </tbody></table></div><p class="tbl-foot">${list.length} ${tr('documents','مستندات')}</p></div>`}
 
 /* ================= editor ================= */
 const cur=()=>DB.docs.find(d=>d.id===curId);
 const canEdit=d=>role()!=='finance'&&['draft','pending'].includes(d.status);
-function newDoc(type){const d=blankDoc(DB,type||'invoice','');log(d,'created');DB.docs.push(d);go('editor',d.id)}
+function newDoc(type,co){const d=blankDoc(DB,type||'invoice','',co);DB.docs.push(d);curId=d.id;log(d,'created');go('editor',d.id)}
 function edActions(d){const r=role(),s=d.status,b=[];
-  if(r==='sales'&&s==='draft')b.push(`<button class="btn primary" type="button" data-act="submit">${tr('Submit for approval','إرسال للموافقة')}</button>`);
-  if(r==='admin'&&['draft','pending'].includes(s))b.push(`<button class="btn primary" type="button" data-act="issue">${tr('Approve and issue','الموافقة والإصدار')}</button>`);
-  if(['admin','finance'].includes(r)&&s==='issued'&&DOCS[d.type].bill)b.push(`<button class="btn primary" type="button" data-act="pay">${tr('Record payment','تسجيل الدفع')}</button>`);
+  if(r==='sales'&&s==='draft')b.push(`<button class="btn primary" type="button" data-act="submit" ${isSame(d)?'disabled':''}>${tr('Submit for approval','إرسال للموافقة')}</button>`);
+  if(r==='admin'&&['draft','pending'].includes(s))b.push(`<button class="btn primary" type="button" data-act="issue" ${isSame(d)?'disabled':''}>${tr('Approve and issue','الموافقة والإصدار')}</button>`);
+  if(['admin','finance'].includes(r)&&s==='issued'&&(DOCS[d.type].bill||d.type==='proforma'))b.push(`<button class="btn primary" type="button" data-act="pay">${tr('Record payment','تسجيل الدفع')}</button>`);
   if(r!=='finance'&&['issued','paid'].includes(s)&&NEXT[d.type])b.push(`<button class="btn" type="button" data-act="convert">${tr('Create ','إنشاء ')}${dn(NEXT[d.type])}</button>`);
   if(['issued','paid'].includes(s))b.push(`<button class="btn" type="button" data-act="email">${tr('Email','إرسال بالبريد')}</button>`);
   b.push(`<button class="btn dark" type="button" data-act="pdf">${tr('Download PDF','تنزيل PDF')}</button>`);
@@ -912,30 +1062,33 @@ function fld(k,l,o={}){const d=cur();const v=k.split('.').reduce((a,p)=>a?.[p],d
   if(o.chk)return `<label class="chk"><input type="checkbox" id="${id}" data-k="${k}" ${v?'checked':''}>${l}</label>`;
   let inp;
   if(o.sel)inp=`<select id="${id}" data-k="${k}">${o.sel.map(([a,b])=>`<option value="${a}" ${a===v?'selected':''}>${b}</option>`).join('')}</select>`;
-  else if(o.a)inp=`<textarea id="${id}" data-k="${k}" dir="auto">${e(v)}</textarea>`;
+  else if(o.a)inp=`<textarea id="${id}" data-k="${k}" dir="auto" ${o.ph?`placeholder="${e(o.ph)}"`:''}>${e(v)}</textarea>`;
   else inp=`<input type="${o.date?'date':'text'}" id="${id}" data-k="${k}" value="${e(v)}" dir="${o.date||o.ltr?'ltr':'auto'}">`;
   return `<div class="f ${o.h?'half':''}"><label for="${id}">${l}</label>${inp}</div>`}
 const sec=(t,open,body)=>`<details class="sec" ${open?'open':''}><summary>${t}</summary>${body}</details>`;
 function edForm(d){S=d;const ty=DOCS[d.type];
+  const ext=DB.clients.filter(c=>!c.group),grp=DB.clients.filter(c=>c.group);
   return `<fieldset ${canEdit(d)?'':'disabled'}>
   ${sec(tr('Document','المستند'),true,`<div class="grid">
    ${fld('type',tr('Document type','نوع المستند'),{sel:Object.keys(DOCS).map(k=>[k,dn(k)])})}
-   <div class="f"><span class="lab">${tr('Number','الرقم')}</span><div class="ro">${d.number?bd(d.number):tr('Assigned on approval · next ','يُخصص عند الموافقة · التالي ')+bd(nextNumber(d.type,d.date))}</div></div>
+   <div class="f"><span class="lab">${tr('Number','الرقم')}</span><div class="ro">${d.number?bd(d.number):tr('Assigned on approval · next ','يُخصص عند الموافقة · التالي ')+bd(nextNumber(d))}</div></div>
    ${fld('date',tr('Issue date','تاريخ الإصدار'),{date:1,h:1})}${fld('due',dueLU(d.type),{date:1,h:1})}
    ${ty.money?fld('currency',tr('Currency','العملة'),{sel:Object.keys(CUR).map(k=>[k,k+' · '+CUR[k][0]]),h:1})+fld('vat',tr('VAT %','ضريبة القيمة المضافة %'),{h:1,ltr:1}):''}
    ${fld('ref',tr('Reference (PO, contract)','المرجع (أمر شراء، عقد)'))}</div>`)}
   ${sec(partyLU(d.type),true,`<div class="grid">
-   <div class="f"><label for="e-client">${tr('Choose a saved client','اختر عميلًا محفوظًا')}</label><select id="e-client" dir="ltr"><option value="">${tr('— Enter the details below —','— أدخل البيانات أدناه —')}</option>${DB.clients.map(c=>`<option value="${c.id}" ${c.id===d.clientId?'selected':''}>${e(c.name)}</option>`).join('')}</select></div>
+   <div class="f"><label for="e-client">${tr('Choose a saved client','اختر عميلًا محفوظًا')}</label><select id="e-client" dir="ltr"><option value="">${tr('— Enter the details below —','— أدخل البيانات أدناه —')}</option>
+    <optgroup label="${tr('Clients','العملاء')}">${ext.map(c=>`<option value="${c.id}" ${c.id===d.clientId?'selected':''}>${e(c.name)}</option>`).join('')}</optgroup>
+    <optgroup label="${tr('Seven group companies','شركات مجموعة سفن')}">${grp.map(c=>`<option value="${c.id}" ${c.id===d.clientId?'selected':''} ${c.group===d.companyId?'disabled':''}>${e(c.name)}${c.group===d.companyId?' ('+tr('issuing company','الشركة المُصدِرة')+')':''}</option>`).join('')}</optgroup></select></div>
    ${fld('buyer.name',tr('Company name','اسم الشركة'))}${fld('buyer.address',tr('Address','العنوان'),{a:1})}${fld('buyer.taxLabel',tr('ID type','نوع المعرّف'),{h:1})}${fld('buyer.taxId',tr('ID number','رقم المعرّف'),{h:1,ltr:1})}${fld('buyer.contact',tr('Contact / email','جهة الاتصال / البريد'),{ltr:1})}</div>`)}
   ${sec(isLOI()?tr('Products','المنتجات'):tr('Items','البنود'),true,`<div id="items">${itemsHTML(d)}</div>
    <div class="add-row"><select id="e-addp" aria-label="${tr('Add a product from the catalogue','إضافة منتج من الكتالوج')}"><option value="">${tr('Add from product catalogue…','إضافة من كتالوج المنتجات…')}</option>${DB.products.map(p=>`<option value="${p.id}">${e(p.desc.split('\n')[0])}</option>`).join('')}</select><button class="btn sm" type="button" data-act="additem">${tr('+ Blank item','+ بند فارغ')}</button></div>`)}
-  ${isLOI()?sec(tr('Letter text','نص الخطاب'),true,`<div class="grid">${fld('loi.subject',tr('Subject','الموضوع'))}${fld('loi.body',tr('Opening paragraph','الفقرة الافتتاحية'),{a:1})}${fld('loi.closing',tr('Closing paragraphs','الفقرات الختامية'),{a:1})}</div>`):''}
+  ${isLOI()?sec(tr('Letter text','نص الخطاب'),true,`<div class="grid">${fld('loi.subject',tr('Subject','الموضوع'))}${fld('loi.body',tr('Opening paragraph ({company} = issuing company)','الفقرة الافتتاحية ({company} = الشركة المُصدِرة)'),{a:1})}${fld('loi.closing',tr('Closing paragraphs','الفقرات الختامية'),{a:1})}</div>`):''}
   ${sec(tr('Terms & shipment','الشروط والشحن'),false,`<div class="grid">
    ${isPL()?'':fld('terms.validity',tr('Price validity','صلاحية السعر'),{a:1})+fld('terms.payment',tr('Payment terms','شروط الدفع'))}${fld('terms.incoterm',tr('Price terms (Incoterm)','شروط السعر (إنكوترمز)'))}
    ${fld('terms.shipment',tr('Shipment','الشحن'),{a:1})}${fld('terms.pol',tr('Port of loading','ميناء التحميل'),{h:1})}${fld('terms.pod',tr('Port of discharge','ميناء التفريغ'),{h:1})}${fld('terms.containers',tr('Containers / B/L','الحاويات / بوليصة الشحن'))}
    <p class="hint">${tr('Empty fields are left off the document.','الحقول الفارغة لا تظهر في المستند.')}</p></div>`)}
   ${sec(tr('Options','خيارات'),false,`<div class="grid">
-   ${fld('showSig',tr('Signature block','خانة التوقيع'),{chk:1})}${ty.money?fld('showWords',tr('Amount in words','المبلغ كتابةً'),{chk:1}):''}${fld('watermark',tr('Watermark (Letterhead layout)','العلامة المائية (تصميم الورق الرسمي)'),{chk:1})}${fld('note',tr('Footer note','ملاحظة التذييل'),{a:1})}</div>`)}
+   ${fld('showSig',tr('Signature block','خانة التوقيع'),{chk:1})}${ty.money?fld('showWords',tr('Amount in words','المبلغ كتابةً'),{chk:1}):''}${fld('watermark',tr('Watermark (Letterhead layout)','العلامة المائية (تصميم الورق الرسمي)'),{chk:1})}${fld('note',tr('Footer note','ملاحظة التذييل'),{a:1,ph:'This document is issued electronically by '+coName(d.companyId)+'.'})}</div>`)}
   </fieldset>
   ${sec(tr('Display','العرض'),true,`<div class="grid">${fld('bilingual',tr('English and Arabic labels on the document','عناوين بالإنجليزية والعربية في المستند'),{chk:1})}${fld('showQR',tr('Verification QR code','رمز QR للتحقق'),{chk:1})}<p class="hint">${tr('Display options and layout can be changed at any time, even after issue.','يمكن تغيير خيارات العرض والتصميم في أي وقت، حتى بعد الإصدار.')}</p></div>`)}`}
 function itemsHTML(d){S=d;return d.items.map((it,i)=>`<div class="item" data-i="${i}">
@@ -948,12 +1101,19 @@ function itemsHTML(d){S=d;return d.items.map((it,i)=>`<div class="item" data-i="
   ${isPL()?`<div class="f q"><label for="it-${i}-pkgs">${tr('Packages','الطرود')}</label><input type="text" inputmode="decimal" id="it-${i}-pkgs" data-it="pkgs" value="${e(it.pkgs)}" dir="ltr"></div><div class="f q"><label for="it-${i}-net">${tr('Net kg','صافي كغ')}</label><input type="text" inputmode="decimal" id="it-${i}-net" data-it="net" value="${e(it.net)}" dir="ltr"></div><div class="f q"><label for="it-${i}-gross">${tr('Gross kg','إجمالي كغ')}</label><input type="text" inputmode="decimal" id="it-${i}-gross" data-it="gross" value="${e(it.gross)}" dir="ltr"></div>`:''}
  </div>`).join('')||`<p class="hint" style="margin:0 2px 12px">${tr('No items yet. Add one from the catalogue.','لا توجد بنود بعد. أضف بندًا من الكتالوج.')}</p>`}
 function vEditor(){const d=cur();if(!d){view='documents';return vDocuments()}
-  S=d;
+  S=d;const c=coOf(DB,d.companyId);
   const lock=!canEdit(d)?`<p class="lockmsg">${role()==='finance'?tr('Finance has view-only access to documents.','صلاحية الاطلاع فقط لقسم المالية.'):d.status==='cancelled'?tr('This document was cancelled.','تم إلغاء هذا المستند.'):tr('Issued documents are locked so the record matches what the client received. Use Duplicate to start a new version.','المستندات الصادرة مقفلة لتطابق ما استلمه العميل. استخدم «نسخ» لبدء نسخة جديدة.')}</p>`:'';
-  return `<div class="page-h"><div><p class="crumb"><button type="button" data-nav="documents">${tr('Documents','المستندات')}</button> / ${dn(d.type)}</p><h1>${d.number?bd(d.number):tr('New ','جديد: ')+dn(d.type).toLowerCase()}</h1><p style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${chip(d)}<span>${d.buyer.name?bn(d.buyer.name):tr('No client selected','لم يتم اختيار عميل')}</span></p></div><div class="actions">${edActions(d)}</div></div>
-  ${lock}
+  const band=`<div class="coband co-b-${c.id}"><span class="co co-${c.id}">${e(c.code)}</span><span>${tr('Issuing as','الإصدار باسم')} <b>${e(c.name)}</b> · <bdi dir="ltr">TRN ${e(c.trn)}</bdi></span>${canEdit(d)&&!d.number?`<button type="button" class="btn sm" data-act="changeco">${tr('Change company','تغيير الشركة')}</button>`:''}</div>`;
+  const icb=isSame(d)?`<p class="errband">${tr('The client is the same company that is issuing the document. Choose the other Seven company as client, or change the issuing company.','العميل هو نفس الشركة المُصدِرة. اختر شركة سفن الأخرى كعميل أو غيّر الشركة المُصدِرة.')}</p>`:isIC(d)?`<p class="icband"><span class="ic">IC</span> ${tr('Document between Seven companies: ','مستند بين شركتي سفن: ')}<b>${e(c.name)}</b> → <b>${e(coName(groupOf(d)))}</b> · ${tr('It is tagged so it can be filtered separately.','تم تمييزه ليمكن تصفيته بشكل منفصل.')}</p>`:'';
+  const arch=d.number&&d.fp?`<div class="card arch"><div class="card-h"><h2>${tr('Archived copy','النسخة المؤرشفة')}</h2><span class="chip st-paid">${tr('Locked','مقفلة')}</span></div><div class="card-b archb">
+    <div><small>${tr('Stored','مخزنة')}</small>${tr('Cloud database + off-site backup','قاعدة البيانات السحابية + نسخة احتياطية خارجية')}</div>
+    <div><small>${tr('Digital fingerprint','البصمة الرقمية')}</small><code dir="ltr">${e(d.fp.slice(0,16))}…${e(d.fp.slice(-8))}</code></div>
+    <div><small>${tr('Purpose','الغرض')}</small>${tr('Any change to the file would change the fingerprint, so the original can always be proven.','أي تعديل على الملف يغيّر البصمة، لذلك يمكن دائمًا إثبات الأصل.')}</div></div></div>`:'';
+  return `<div class="page-h"><div><p class="crumb"><button type="button" data-nav="documents">${tr('Documents','المستندات')}</button> / ${dn(d.type)}</p><h1>${d.number?bd(d.number):tr('New ','جديد: ')+dn(d.type).toLowerCase()}</h1><p style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${chip(d)}<span>${tr('Client:','العميل:')} ${d.buyer.name?bn(d.buyer.name):tr('not selected yet','لم يُحدد بعد')}</span></p></div><div class="actions">${edActions(d)}</div></div>
+  ${band}${icb}${lock}
   <div class="ed"><aside class="ed-form" id="edForm">${edForm(d)}</aside>
    <section class="ed-prev"><div class="picker" id="picker" role="group" aria-label="${tr('Layout','التصميم')}"></div><div class="stage" id="stage"><div id="sheetWrap"><div id="sheet"></div></div></div></section></div>
+  ${arch}
   <div class="card hist"><div class="card-h"><h2>${tr('History','السجل')}</h2></div><ol>${d.history.slice().reverse().map(h=>`<li><time>${udt(h.at)}</time><span><b>${hx(h)}</b> · ${e(userName(h.user))}</span></li>`).join('')}</ol></div>`}
 let pT;
 function preview(){const d=cur();if(!d||!$('#sheet'))return;
@@ -966,19 +1126,23 @@ function fit(){const st=$('#stage'),sh=$('#sheet');if(!st||!sh||!sh.firstElement
 let ro;function afterEditor(){preview();try{ro&&ro.disconnect();ro=new ResizeObserver(fit);ro.observe($('#stage'))}catch(x){}}
 window.addEventListener('resize',fit);
 if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>{if(view==='editor')preview()});
+async function fingerprint(d){const snap=JSON.stringify({c:d.companyId,n:d.number,t:d.type,dt:d.date,b:d.buyer,i:d.items,tm:d.terms,cur:d.currency,v:d.vat});
+  try{const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(snap));return [...new Uint8Array(buf)].map(b=>b.toString(16).padStart(2,'0')).join('')}catch(x){return fakeFp(snap)}}
 
 /* ================= clients & products ================= */
 function vClients(){
   const c=editClient,ro=role()==='finance';
-  const stats=id=>{const ds=DB.docs.filter(d=>d.clientId===id);return{n:ds.length,v:ds.filter(d=>DOCS[d.type].bill&&['issued','paid'].includes(d.status)).reduce((a,d)=>a+totalOf(d),0)}};
+  const stats=id=>{const ds=DB.docs.filter(d=>d.clientId===id);return{n:ds.length,v:ds.filter(d=>DOCS[d.type].money&&['issued','paid'].includes(d.status)).reduce((a,d)=>a+totalOf(d),0)}};
   const cf=(k,l,h,a,ltr)=>`<div class="f ${h?'half':''}"><label for="c-${k}">${l}</label>${a?`<textarea id="c-${k}" data-c="${k}" dir="auto">${e(c[k])}</textarea>`:`<input type="text" id="c-${k}" data-c="${k}" value="${e(c[k])}" dir="${ltr?'ltr':'auto'}">`}</div>`;
-  return `<div class="page-h"><div><h1>${tr('Clients','العملاء')}</h1><p>${tr('Saved once, selected on every document.','تُحفظ مرة واحدة وتُختار في كل مستند.')}</p></div><div class="actions">${ro?'':`<button class="btn primary" type="button" data-act="newclient">${tr('Add client','إضافة عميل')}</button>`}</div></div>
+  const row=x=>{const s=stats(x.id);return `<tr class="${ro||x.group?'':'click'}" data-client="${x.group?'':x.id}"><td><b>${bn(x.name)}</b>${x.group?` <span class="co co-${x.group}">${e(coOf(DB,x.group).code)}</span>`:''}</td><td>${e(x.country)}</td><td class="mono">${bd(x.taxLabel+' '+x.taxId)}</td><td>${bd(x.contact)}</td><td class="n">${s.n}</td><td class="n">${m0(s.v)}</td></tr>`};
+  const head=`<thead><tr><th>${tr('Client','العميل')}</th><th>${tr('Country','الدولة')}</th><th>${tr('Tax ID','المعرّف الضريبي')}</th><th>${tr('Contact','جهة الاتصال')}</th><th class="n">${tr('Documents','المستندات')}</th><th class="n">${tr('Amount (USD)','المبلغ (دولار)')}</th></tr></thead>`;
+  return `<div class="page-h"><div><h1>${tr('Clients','العملاء')}</h1><p>${tr('Saved once, selected on every document. Shared by both companies.','تُحفظ مرة واحدة وتُختار في كل مستند. مشتركة بين الشركتين.')}</p></div><div class="actions">${ro?'':`<button class="btn primary" type="button" data-act="newclient">${tr('Add client','إضافة عميل')}</button>`}</div></div>
   ${c?`<div class="card" style="margin-bottom:20px"><div class="card-h"><h2>${c.id?tr('Edit client','تعديل العميل'):tr('New client','عميل جديد')}</h2></div><div class="card-b"><div class="grid">
    ${cf('name',tr('Company name','اسم الشركة'))}${cf('country',tr('Country','الدولة'),1)}${cf('contact',tr('Contact / email','جهة الاتصال / البريد'),1,0,1)}${cf('address',tr('Address','العنوان'),0,1)}${cf('taxLabel',tr('ID type (TRN, VAT No., Tax ID)','نوع المعرّف (الرقم الضريبي…)'),1)}${cf('taxId',tr('ID number','رقم المعرّف'),1,0,1)}</div>
    <div class="actions" style="margin-top:16px"><button class="btn primary" type="button" data-act="saveclient">${tr('Save client','حفظ العميل')}</button><button class="btn" type="button" data-act="cancelclient">${tr('Cancel','إلغاء')}</button></div></div></div>`:''}
-  <div class="card"><div class="tw"><table class="tbl"><thead><tr><th>${tr('Client','العميل')}</th><th>${tr('Country','الدولة')}</th><th>${tr('Tax ID','المعرّف الضريبي')}</th><th>${tr('Contact','جهة الاتصال')}</th><th class="n">${tr('Documents','المستندات')}</th><th class="n">${tr('Invoiced (USD)','المفوتر (دولار)')}</th></tr></thead><tbody>
-  ${DB.clients.map(x=>{const s=stats(x.id);return `<tr class="${ro?'':'click'}" data-client="${x.id}"><td><b>${bn(x.name)}</b></td><td>${e(x.country)}</td><td class="mono">${bd(x.taxLabel+' '+x.taxId)}</td><td>${bd(x.contact)}</td><td class="n">${s.n}</td><td class="n">${m0(s.v)}</td></tr>`}).join('')}
-  </tbody></table></div></div>`}
+  <div class="card"><div class="tw"><table class="tbl">${head}<tbody>${DB.clients.filter(x=>!x.group).map(row).join('')}</tbody></table></div></div>
+  <h2 class="subh">${tr('Seven group companies','شركات مجموعة سفن')}</h2><p class="muted" style="margin:-6px 0 12px">${tr('Used for documents from one Seven company to the other. Their details come from Settings.','تُستخدم للمستندات بين شركتي سفن. بياناتها تأتي من الإعدادات.')}</p>
+  <div class="card"><div class="tw"><table class="tbl">${head}<tbody>${DB.clients.filter(x=>x.group).map(row).join('')}</tbody></table></div></div>`}
 function vProducts(){
   const p=editProduct,ro=role()==='finance';
   const pf=(k,l,h,a,ltr)=>`<div class="f ${h?'half':''}"><label for="p-${k}">${l}</label>${a?`<textarea id="p-${k}" data-p="${k}" dir="auto">${e(p[k])}</textarea>`:`<input type="text" id="p-${k}" data-p="${k}" value="${e(p[k])}" dir="${ltr?'ltr':'auto'}">`}</div>`;
@@ -994,10 +1158,10 @@ function vProducts(){
 function vVerify(){
   const recent=DB.docs.filter(d=>d.number&&d.status!=='cancelled').sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3);
   let res='';
-  if(vResult==='none')res=`<div class="vres bad"><h2>${tr('Not found','غير موجود')}</h2><p>${tr('No document with the number ','لم تُصدر شركة سفن للتجارة العامة أي مستند بالرقم ')}<b class="mono">${bd(vQuery)}</b>${tr(' was issued by Seven General Trading LLC. Treat it as not genuine and contact Seven before paying.','. اعتبره غير أصلي وتواصل مع سفن قبل الدفع.')}</p></div>`;
+  if(vResult==='none')res=`<div class="vres bad"><h2>${tr('Not found','غير موجود')}</h2><p>${tr('No Seven company issued a document with the number ','لم تُصدر أي شركة من شركات سفن مستندًا بالرقم ')}<b class="mono">${bd(vQuery)}</b>${tr('. Treat it as not genuine and contact Seven before paying.','. اعتبره غير أصلي وتواصل مع سفن قبل الدفع.')}</p></div>`;
   else if(vResult){const d=DB.docs.find(x=>x.id===vResult);S=d;const st=statusOf(d);
     res=`<div class="vres ${st==='cancelled'?'bad':'ok'}"><h2>${st==='cancelled'?tr('Cancelled document','مستند ملغى'):tr('Genuine document','مستند أصلي')}</h2><dl>
-     <dt>${tr('Issued by','صادر عن')}</dt><dd>${e(DB.company.name)}</dd><dt>${tr('Document','المستند')}</dt><dd>${dn(d.type)} ${bd(d.number)}</dd><dt>${tr('Issue date','تاريخ الإصدار')}</dt><dd>${ud(d.date)}</dd>
+     <dt>${tr('Issued by','صادر عن')}</dt><dd>${e(coName(d.companyId))}</dd><dt>${tr('Document','المستند')}</dt><dd>${dn(d.type)} ${bd(d.number)}</dd><dt>${tr('Issue date','تاريخ الإصدار')}</dt><dd>${ud(d.date)}</dd>
      <dt>${tr('Issued to','صادر إلى')}</dt><dd><bdi dir="ltr">${e(d.buyer.name.slice(0,4))}••••</bdi></dd>${DOCS[d.type].money?`<dt>${tr('Amount','المبلغ')}</dt><dd>${bd(d.currency+' '+mf(totalOf(d)))}</dd>`:''}<dt>${tr('Status','الحالة')}</dt><dd>${chip(d)}</dd></dl></div>`}
   return `<div class="page-h"><div><h1>${tr('Verify a document','التحقق من مستند')}</h1><p>${tr('Every Seven document carries a QR code. Buyers scan it, or enter the number here, to confirm it is genuine.','يحمل كل مستند من سفن رمز QR. يمسحه المشتري أو يُدخل الرقم هنا للتأكد من صحته.')}</p></div></div>
   <div class="verify card card-b">
@@ -1005,19 +1169,70 @@ function vVerify(){
    <div class="vbox"><input id="vq" type="text" dir="ltr" placeholder="009/INV_SGT/X/2026" value="${e(vQuery)}"><button class="btn primary" type="button" data-act="verify">${tr('Verify','تحقق')}</button></div>
    <div class="try">${tr('Try:','جرّب:')} ${recent.map(d=>`<button class="btn sm mono" type="button" data-try="${e(d.number)}">${bd(d.number)}</button>`).join('')}<button class="btn sm" type="button" data-try="777/INV_SGT/X/2026">${tr('a fake number','رقم مزيف')}</button></div>
    ${res?`<div style="margin-top:16px">${res}</div>`:''}
-   <p class="hint" style="margin-top:16px">${tr('In the live version the QR code opens Seven’s public verification page. Part of the client name is hidden for privacy.','في النسخة الفعلية يفتح رمز QR صفحة التحقق العامة لسفن. يُخفى جزء من اسم العميل لحماية البيانات.')}</p>
+   <p class="hint" style="margin-top:16px">${tr('In the live version the QR code opens a public verification page that shows only these few details. Part of the client name is hidden for privacy.','في النسخة الفعلية يفتح رمز QR صفحة تحقق عامة تعرض هذه البيانات فقط. يُخفى جزء من اسم العميل لحماية البيانات.')}</p>
   </div>`}
+
+/* ================= security ================= */
+function vSecurity(){
+  const last=DB.backups[0];
+  const fails=DB.audit.filter(a=>a.a.startsWith('signin-')||a.a==='2fa-failed').filter(a=>a.at>new Date(Date.now()-7*864e5).toISOString()).length;
+  const ago=iso=>{const h=Math.round((Date.now()-Date.parse(iso))/36e5);return h<1?tr('less than an hour ago','قبل أقل من ساعة'):h<24?tr(h+' h ago','قبل '+h+' ساعة'):tr(Math.round(h/24)+' days ago','قبل '+Math.round(h/24)+' يوم')};
+  const layers=[
+   [tr('Invitation-only accounts','حسابات بدعوة فقط'),tr('No public sign-up. Only the administrator can add people.','لا يوجد تسجيل عام. المسؤول فقط يضيف الأشخاص.')],
+   [tr('Two-step verification for everyone','التحقق بخطوتين للجميع'),tr('A stolen password alone is not enough to get in.','كلمة المرور المسروقة وحدها لا تكفي للدخول.')],
+   [tr('Blocking after 5 failed attempts','الحظر بعد 5 محاولات فاشلة'),tr('Stops password guessing.','يمنع تخمين كلمات المرور.')],
+   [tr('Sessions end after 30 minutes idle','انتهاء الجلسة بعد 30 دقيقة من عدم النشاط'),tr('A computer left open locks itself.','الجهاز المتروك مفتوحًا يُقفل تلقائيًا.')],
+   [tr('Roles and database rules','الصلاحيات وقواعد قاعدة البيانات'),tr('Each person reaches only what their role allows, enforced by the database itself.','كل شخص يصل فقط لما تسمح به صلاحيته، وتفرضه قاعدة البيانات نفسها.')],
+   [tr('Encryption in transit and at rest','التشفير أثناء النقل والتخزين'),tr('HTTPS for every connection; data and files encrypted on the server.','HTTPS لكل اتصال، والبيانات والملفات مشفّرة على الخادم.')],
+   [tr('Private file archive','أرشيف ملفات خاص'),tr('PDFs open only through links that expire in minutes.','ملفات PDF تُفتح فقط عبر روابط تنتهي خلال دقائق.')],
+   [tr('Issued documents cannot be deleted','لا يمكن حذف المستندات الصادرة'),tr('They can only be cancelled, and every action is recorded.','يمكن إلغاؤها فقط، ويُسجّل كل إجراء.')],
+   [tr('Hidden from search engines','مخفي عن محركات البحث'),tr('The back office never appears on Google.','لا يظهر المكتب الخلفي أبدًا على Google.')]];
+  return `<div class="page-h"><div><h1>${tr('Security & backup','الأمان والنسخ الاحتياطي')}</h1><p>${tr('Who can get in, what happened, and where the copies are. Visible to administrators only.','من يمكنه الدخول، وما الذي حدث، وأين توجد النسخ. للمسؤولين فقط.')}</p></div></div>
+  <div class="kpis">
+   <div class="card kpi"><small>${tr('Last backup','آخر نسخة احتياطية')}</small><strong>${last?ago(last.at):'—'}</strong><span><span class="chip st-paid">${tr('2 copies','نسختان')}</span> ${tr('cloud + off-site','سحابة + خارجية')}</span></div>
+   <div class="card kpi"><small>${tr('Last restore test','آخر اختبار استعادة')}</small><strong>${DB.restoreTest?ago(DB.restoreTest):'—'}</strong><span>${tr('Checked monthly','يُفحص شهريًا')}</span></div>
+   <div class="card kpi"><small>${tr('Two-step verification','التحقق بخطوتين')}</small><strong>${DB.users.filter(u=>u.mfa!==false).length}/${DB.users.length}</strong><span>${tr('users protected','مستخدمون محميون')}</span></div>
+   <div class="card kpi ${fails?'warnk':''}"><small>${tr('Blocked or failed sign-ins','محاولات دخول فاشلة أو محظورة')}</small><strong>${fails}</strong><span>${tr('last 7 days','آخر 7 أيام')}</span></div>
+  </div>
+  <div class="two">
+   <div class="card"><div class="card-h"><h2>${tr('Backups','النسخ الاحتياطية')}</h2><div class="actions"><button class="btn sm" type="button" data-act="restoretest">${tr('Run restore test','تشغيل اختبار الاستعادة')}</button><button class="btn sm dark" type="button" data-act="backupnow">${tr('Back up now','نسخ احتياطي الآن')}</button></div></div>
+    <p class="hint" style="padding:12px 20px 0">${tr('Every night at 03:00 (Dubai) a full copy of the data and PDFs is saved in the cloud database and sent, encrypted, to a second provider.','كل ليلة الساعة 03:00 (دبي) تُحفظ نسخة كاملة من البيانات وملفات PDF في قاعدة البيانات السحابية وتُرسل مشفّرة إلى مزوّد ثانٍ.')}</p>
+    <div class="tw"><table class="tbl"><thead><tr><th>${tr('Date','التاريخ')}</th><th>${tr('Type','النوع')}</th><th>${tr('Size','الحجم')}</th><th>${tr('Copies','النسخ')}</th></tr></thead><tbody>
+    ${DB.backups.slice(0,8).map(b=>`<tr><td style="white-space:nowrap">${udt(b.at)}</td><td>${b.kind==='auto'?tr('Automatic, daily','تلقائي يومي'):tr('Manual','يدوي')}</td><td class="mono">${bd(b.size)}</td><td><span class="chip st-paid">${tr('Cloud','سحابة')}</span> <span class="chip st-paid">${tr('Off-site','خارجية')}</span></td></tr>`).join('')}
+    </tbody></table></div></div>
+   <div class="card"><div class="card-h"><h2>${tr('Protection layers','طبقات الحماية')}</h2></div><ul class="layers">${layers.map(([a,b])=>`<li><span class="lyr-ok" aria-hidden="true"></span><span><b>${a}</b><small>${b}</small></span></li>`).join('')}</ul></div>
+  </div>
+  <div class="card" style="margin-top:20px"><div class="card-h"><h2>${tr('People with access','الأشخاص المصرّح لهم')}</h2><button class="btn sm" type="button" data-act="invite">${tr('Invite person','دعوة شخص')}</button></div>
+   <div class="tw"><table class="tbl"><thead><tr><th>${tr('Name','الاسم')}</th><th>${tr('Email','البريد الإلكتروني')}</th><th>${tr('Role','الصلاحية')}</th><th>${tr('Two-step verification','التحقق بخطوتين')}</th><th>${tr('Status','الحالة')}</th></tr></thead><tbody>
+   ${DB.users.map(u=>`<tr><td><b>${e(u.name)}</b></td><td>${bd(u.email)}</td><td>${roleName(u.role)}</td><td>${u.mfa!==false?`<span class="chip st-paid">${tr('On','مفعّل')}</span>`:`<span class="chip st-pending">${tr('Set up on first sign-in','يُفعّل عند أول دخول')}</span>`}</td><td>${u.invited?`<span class="chip st-pending">${tr('Invited','مدعو')}</span>`:`<span class="chip st-issued">${tr('Active','نشط')}</span>`}</td></tr>`).join('')}
+   </tbody></table></div></div>
+  <div class="card" style="margin-top:20px"><div class="card-h"><h2>${tr('Activity log','سجل النشاط')}</h2><span class="muted" style="font-size:12.5px">${tr('Kept for 2 years · cannot be edited','يُحفظ لمدة عامين · لا يمكن تعديله')}</span></div>
+   <div class="tw"><table class="tbl"><thead><tr><th>${tr('When','الوقت')}</th><th>${tr('Who','من')}</th><th>${tr('What','ماذا')}</th><th>${tr('Detail','التفاصيل')}</th></tr></thead><tbody>
+   ${DB.audit.slice(0,25).map(a=>`<tr class="${a.a.startsWith('signin-')||a.a==='2fa-failed'?'warnrow':''}"><td style="white-space:nowrap">${udt(a.at)}</td><td>${a.user?e(userName(a.user)):`<span class="muted">${tr('Unknown','غير معروف')}</span>`}</td><td>${AX(a.a)}</td><td>${bd(a.x)}</td></tr>`).join('')}
+   </tbody></table></div></div>`}
+function inviteModal(){
+  $('#modal').hidden=false;
+  $('#modal').innerHTML=`<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="ih"><h2 id="ih">${tr('Invite person','دعوة شخص')}</h2>
+   <p class="muted">${tr('They receive a single-use link, create a password and set up two-step verification before the first sign-in.','يتلقى رابطًا لمرة واحدة، وينشئ كلمة مرور ويفعّل التحقق بخطوتين قبل أول دخول.')}</p>
+   <div class="f"><label for="i-name">${tr('Name','الاسم')}</label><input type="text" id="i-name"></div>
+   <div class="f"><label for="i-email">${tr('Work email','بريد العمل')}</label><input type="email" id="i-email" dir="ltr" placeholder="name@sevengt.com"></div>
+   <div class="f"><label for="i-role">${tr('Role','الصلاحية')}</label><select id="i-role"><option value="sales">${roleName('sales')}</option><option value="finance">${roleName('finance')}</option><option value="admin">${roleName('admin')}</option></select></div>
+   <p class="hint">${tr('Demo: no email is sent.','نسخة تجريبية: لا يتم إرسال بريد.')}</p>
+   <div class="actions"><button class="btn primary" type="button" data-act="sendinvite">${tr('Send invitation','إرسال الدعوة')}</button><button class="btn" type="button" data-act="closemodal">${tr('Cancel','إلغاء')}</button></div></div>`;
+  setTimeout(()=>$('#i-name').focus(),30)}
 
 /* ================= settings ================= */
 function vSettings(){
-  const c=DB.company,adm=role()==='admin';
+  const c=coOf(DB,setCo),adm=role()==='admin';
   const sf=(k,l,h,a,b,ltr)=>{const v=b?c.bank[k]:c[k];const id=(b?'sb-':'sc-')+k;return `<div class="f ${h?'half':''}"><label for="${id}">${l}</label>${a?`<textarea id="${id}" ${b?'data-b':'data-co'}="${k}" dir="auto">${e(v)}</textarea>`:`<input type="text" id="${id}" ${b?'data-b':'data-co'}="${k}" value="${e(v)}" dir="${ltr?'ltr':'auto'}">`}</div>`};
-  return `<div class="page-h"><div><h1>${tr('Settings','الإعدادات')}</h1><p>${adm?tr('These details appear on every document.','تظهر هذه البيانات في كل مستند.'):tr('Only the administrator can change these settings.','يمكن للمسؤول فقط تعديل هذه الإعدادات.')}</p></div></div>
+  return `<div class="page-h"><div><h1>${tr('Settings','الإعدادات')}</h1><p>${adm?tr('Each company has its own details, logo, bank account and numbering.','لكل شركة بياناتها وشعارها وحسابها البنكي وترقيمها.'):tr('Only the administrator can change these settings.','يمكن للمسؤول فقط تعديل هذه الإعدادات.')}</p></div></div>
+  <div class="cofilter" role="group" aria-label="${tr('Company','الشركة')}">${COS().map(x=>`<button type="button" data-setco="${x.id}" aria-pressed="${x.id===setCo}"><span class="co co-${x.id}">${e(x.code)}</span>${e(x.name)}</button>`).join('')}</div>
+  <div class="coband co-b-${c.id}" style="margin-bottom:16px"><span class="co co-${c.id}">${e(c.code)}</span><span>${tr('Editing','تعديل')} <b>${e(c.name)}</b> · ${tr('numbers look like','الأرقام بالشكل')} <bdi dir="ltr" class="mono">${e(nextNumberCo(c.id,'invoice'))}</bdi></span></div>
   <div class="two">
    <div class="card"><div class="card-h"><h2>${tr('Company','الشركة')}</h2></div><div class="card-b"><fieldset ${adm?'':'disabled'}><div class="grid">
     <div class="logo-box"><div class="logo-prev">${c.logo?`<img src="${c.logo}" alt="">`:`<em>${tr('Default wordmark','الشعار الافتراضي')}</em>`}</div><label class="btn sm" for="f-logo">${tr('Upload logo','رفع الشعار')}</label><input id="f-logo" type="file" accept="image/*" hidden>${c.logo?`<button class="btn sm" type="button" data-clear="logo">${tr('Remove','إزالة')}</button>`:''}
      <div class="logo-prev dark">${c.logoLight?`<img src="${c.logoLight}" alt="">`:`<em>${tr('White version','النسخة البيضاء')}</em>`}</div><label class="btn sm" for="f-logoLight">${tr('Upload white logo','رفع الشعار الأبيض')}</label><input id="f-logoLight" type="file" accept="image/*" hidden>${c.logoLight?`<button class="btn sm" type="button" data-clear="logoLight">${tr('Remove','إزالة')}</button>`:''}</div>
-    ${sf('name',tr('Company name','اسم الشركة'))}${sf('reg',tr('Reg. number','رقم السجل'),1,0,0,1)}${sf('trn',tr('TRN','الرقم الضريبي'),1,0,0,1)}${sf('address',tr('Address','العنوان'),0,1)}
+    ${sf('name',tr('Legal name','الاسم القانوني'))}${sf('reg',tr('Reg. number','رقم السجل'),1,0,0,1)}${sf('trn',tr('TRN','الرقم الضريبي'),1,0,0,1)}${sf('address',tr('Address','العنوان'),0,1)}
     ${sf('phone',tr('Phone','الهاتف'),1,0,0,1)}${sf('email',tr('Email','البريد الإلكتروني'),1,0,0,1)}${sf('signer',tr('Signatory','المفوض بالتوقيع'),1)}${sf('signerTitle',tr('Signatory title','المسمى الوظيفي'),1)}</div></fieldset></div></div>
    <div class="card"><div class="card-h"><h2>${tr('Bank details on documents','البيانات المصرفية في المستندات')}</h2></div><div class="card-b"><fieldset ${adm?'':'disabled'}><div class="grid">
     ${sf('beneficiary',tr('Beneficiary name','اسم المستفيد'),0,0,1)}${sf('bank',tr('Bank name','اسم البنك'),0,0,1)}${sf('swift','SWIFT / BIC',1,0,1,1)}${sf('account',tr('Account number','رقم الحساب'),1,0,1,1)}${sf('iban','IBAN',0,0,1,1)}</div></fieldset></div></div>
@@ -1028,66 +1243,92 @@ function emailModal(d){S=d;const fn=`${DOCS[d.type].n} ${d.number}`.replace(/[\/
   $('#modal').hidden=false;
   $('#modal').innerHTML=`<div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mh"><h2 id="mh">${tr('Email ','إرسال بالبريد: ')}${dn(d.type)}</h2>
    <div class="f"><label for="m-to">${tr('To','إلى')}</label><input type="email" id="m-to" dir="ltr" value="${e(d.buyer.contact)}"></div>
-   <div class="f"><label for="m-sub">${tr('Subject','الموضوع')}</label><input type="text" id="m-sub" dir="ltr" value="${e(DOCS[d.type].n+' '+d.number+' · Seven General Trading')}"></div>
+   <div class="f"><label for="m-sub">${tr('Subject','الموضوع')}</label><input type="text" id="m-sub" dir="ltr" value="${e(DOCS[d.type].n+' '+d.number+' · '+coName(d.companyId))}"></div>
    <div class="f"><label for="m-msg">${tr('Message','الرسالة')}</label><textarea id="m-msg" dir="ltr" style="min-height:130px">Dear ${e(d.buyer.name)} team,
 
 Please find attached ${DOCS[d.type].n.toLowerCase()} ${e(d.number)}${DOCS[d.type].money?` for ${d.currency} ${mf(totalOf(d))}`:''}.
 
 Kind regards,
 ${e(me().name)}
-Seven General Trading LLC</textarea></div>
+${e(coName(d.companyId))}</textarea></div>
    <div><span class="attach" dir="ltr">PDF · ${e(fn)}</span></div>
    <p class="hint">${tr('Demo: the email is recorded in the history but not sent.','نسخة تجريبية: تُسجّل الرسالة في السجل دون إرسالها.')}</p>
    <div class="actions"><button class="btn primary" type="button" data-act="sendmail">${tr('Send','إرسال')}</button><button class="btn" type="button" data-act="closemodal">${tr('Cancel','إلغاء')}</button></div></div>`;
   setTimeout(()=>$('#m-to')&&$('#m-to').focus(),30)}
 
+/* ================= session timeout ================= */
+let lastAct=Date.now();
+['click','keydown','mousemove','touchstart'].forEach(ev=>document.addEventListener(ev,()=>{lastAct=Date.now()},{passive:true}));
+setInterval(()=>{if(me()&&Date.now()-lastAct>30*60*1000){audit('timeout','');DB.session.user=null;loginStep='pass';loginErr=tr('Your session ended after 30 minutes without activity. Sign in again.','انتهت جلستك بعد 30 دقيقة دون نشاط. سجّل الدخول مرة أخرى.');render()}},30000);
+
 /* ================= events ================= */
 document.addEventListener('submit',ev=>{if(ev.target.id!=='loginForm')return;ev.preventDefault();
+  if(loginStep==='code'){const code=$('#l-code').value.trim();
+    if(code!=='123456'){audit('2fa-failed',pendingUser.email,pendingUser.id);loginErr=tr('That code is not correct. Check the app on your phone and try again.','الرمز غير صحيح. تحقق من التطبيق على هاتفك وحاول مرة أخرى.');render();return}
+    loginErr='';loginStep='pass';DB.fails=0;DB.session.user=pendingUser.id;audit('signin','Dubai, UAE');pendingUser=null;view='documents';lastAct=Date.now();render();toast(tr('Welcome, ','مرحبًا، ')+me().name.split(' ')[0]);return}
   const em=$('#l-email').value.trim().toLowerCase(),pw=$('#l-pass').value;
   const u=DB.users.find(x=>x.email===em);
-  if(!u||!u.pass||pw!==u.pass){loginErr=tr('The email or password is incorrect. Check them and try again.','البريد الإلكتروني أو كلمة المرور غير صحيحة. تحقق منهما وحاول مرة أخرى.');render();$('#l-email').value=em;return}
-  loginErr='';DB.session.user=u.id;view='documents';render();toast(tr('Welcome, ','مرحبًا، ')+u.name.split(' ')[0])});
+  if(!u||!u.pass||pw!==u.pass){DB.fails=(DB.fails||0)+1;audit('signin-failed',em||'—','');
+    if(DB.fails>=5){DB.lockUntil=Date.now()+15*60*1000;audit('signin-blocked','5 failed attempts','');loginErr=''}
+    else loginErr=tr('The email or password is incorrect. ','البريد الإلكتروني أو كلمة المرور غير صحيحة. ')+tr((5-DB.fails)+' attempts left before sign-in is blocked.','متبقٍ '+(5-DB.fails)+' محاولات قبل الحظر.');
+    render();const f=$('#l-email');if(f&&!f.disabled)f.value=em;return}
+  loginErr='';pendingUser=u;loginStep='code';render()});
 document.addEventListener('click',ev=>{
   const b=ev.target.closest('button,a[data-nav],tr[data-open],tr[data-client],tr[data-product]');
-  if(menu&&!(b&&(b.closest('.menu')||b.dataset.act==='newmenu'||b.dataset.act==='usermenu'))){menu='';if(me())renderTop()}
-  if(!b)return;
+  if(menu&&!(b&&(b.closest('.menu')||b.dataset.act==='usermenu'))){menu='';if(me())renderTop()}
+  if(!b||b.disabled)return;
   const ds=b.dataset;
   if(b.tagName==='A')ev.preventDefault();
-  if(ds.lang){DB.ui.lang=ds.lang;render();return}
+  if(ds.lang){DB.ui.lang=ds.lang;render();tourLabels();if(!$('#modal').hidden&&newDlg&&!newDlg.change)renderNew();return}
   if(ds.nav){go(ds.nav);return}
-  if(ds.new){menu='';newDoc(ds.new);return}
+  if(ds.pickco){if(newDlg&&newDlg.change){const d=cur();d.companyId=ds.pickco;if(isSame(d)){d.clientId='';d.buyer={name:'',address:'',taxLabel:'Tax ID',taxId:'',contact:''}}log(d,'company',coName(ds.pickco));$('#modal').hidden=true;newDlg=null;render();toast(tr('Now issuing as ','الإصدار الآن باسم ')+coName(d.companyId));return}
+    newDlg.co=ds.pickco;renderNew();return}
   if(ds.open){go('editor',ds.open);return}
+  if(ds.fco){docFilter.co=ds.fco;render();return}
+  if(ds.setco){setCo=ds.setco;render();return}
   if(ds.ft){docFilter.type=ds.ft;render();return}
   if(ds.fs){docFilter.status=docFilter.status===ds.fs?'all':ds.fs;render();return}
   if(ds.client&&role()!=='finance'){editClient=clone(DB.clients.find(c=>c.id===ds.client));render();return}
   if(ds.product&&role()!=='finance'){editProduct=clone(DB.products.find(p=>p.id===ds.product));render();return}
   if(ds.l){const d=cur();d.layout=ds.l;preview();return}
   if(ds.try){vQuery=ds.try;doVerify();return}
-  if(ds.clear){DB.company[ds.clear]='';render();return}
+  if(ds.clear){coOf(DB,setCo)[ds.clear]='';render();return}
   if(ds.del!=null){const d=cur();d.items.splice(+ds.del,1);$('#items').innerHTML=itemsHTML(d);preview();return}
   const a=ds.act;if(!a)return;
   const d=cur();
   switch(a){
-    case 'newmenu':menu=menu==='new'?'':'new';renderTop();break;
+    case 'newdoc':openNew();break;
+    case 'createdoc':{const n=newDlg;$('#modal').hidden=true;newDlg=null;newDoc(n.type,n.co);toast(tr('Draft created for ','تم إنشاء مسودة باسم ')+coName(n.co));break}
+    case 'changeco':companyModal(d);break;
+    case 'ictoggle':docFilter.ic=!docFilter.ic;render();break;
     case 'usermenu':menu=menu==='user'?'':'user';renderTop();break;
     case 'demofill':$('#l-email').value='teste@sevengt.com';$('#l-pass').value='teste123';break;
-    case 'forgot':toast(tr('Ask your administrator to reset your password.','اطلب من المسؤول إعادة تعيين كلمة المرور.'));break;
-    case 'logout':DB.session.user=null;menu='';loginErr='';render();break;
+    case 'backlogin':loginStep='pass';pendingUser=null;loginErr='';render();break;
+    case 'unlock':DB.lockUntil=0;DB.fails=0;loginErr='';render();break;
+    case 'forgot':toast(tr('Ask your administrator to send you a reset link.','اطلب من المسؤول إرسال رابط إعادة التعيين.'));break;
+    case 'logout':audit('signout','');DB.session.user=null;menu='';loginErr='';loginStep='pass';render();break;
     case 'additem':d.items.push({desc:'',hs:'',qty:'1',unit:'MT',price:'0',pkgs:'0',net:'0',gross:'0'});$('#items').innerHTML=itemsHTML(d);preview();break;
     case 'submit':d.status='pending';log(d,'submitted');render();toast(tr('Sent to the administrator for approval','أُرسل إلى المسؤول للموافقة'));break;
-    case 'issue':d.number=assignNumber(DB,d.type,d.date);d.status='issued';log(d,'issued');render();toast(tr('Issued as ','صدر برقم ')+d.number);break;
+    case 'issue':{if(isSame(d))break;d.number=assignNumber(DB,d);d.status='issued';log(d,'issued');render();toast(tr('Issued and archived as ','صدر وأُرشف برقم ')+d.number);
+      fingerprint(d).then(fp=>{d.fp=fp;save();if(view==='editor'&&curId===d.id)render()});break}
     case 'pay':d.status='paid';d.paidAt=TODAY;log(d,'paid');render();toast(tr('Payment recorded','تم تسجيل الدفع'));break;
     case 'cancel':d.status='cancelled';log(d,'cancelled');render();toast(tr('Document cancelled','تم إلغاء المستند'));break;
-    case 'convert':{const nd=clone(d);Object.assign(nd,{id:uid(),type:NEXT[d.type],number:'',status:'draft',parentId:d.id,date:TODAY,history:[],layout:d.layout});
+    case 'convert':{const nd=clone(d);Object.assign(nd,{id:uid(),type:NEXT[d.type],number:'',fp:'',status:'draft',parentId:d.id,date:TODAY,history:[],layout:d.layout});
       nd.due=nd.type==='packing'?'':addDays(TODAY,nd.type==='proforma'?7:30);
       if(nd.type==='packing')nd.items=nd.items.map(it=>{const p=DB.products.find(x=>x.desc===it.desc);return p?Object.assign(itemFrom(p,num(it.qty)),{desc:it.desc}):it});
-      log(nd,'from',d.number);log(d,'converted',nd.type);DB.docs.push(nd);go('editor',nd.id);toast(dn(nd.type)+tr(' created with the same data',' أُنشئت بنفس البيانات'));break}
-    case 'dup':{const nd=clone(d);Object.assign(nd,{id:uid(),number:'',status:'draft',parentId:null,date:TODAY,history:[]});log(nd,'duplicated',d.number||'draft');DB.docs.push(nd);go('editor',nd.id);toast(tr('Copy created as a draft','أُنشئت نسخة كمسودة'));break}
+      DB.docs.push(nd);log(nd,'from',d.number);log(d,'converted',nd.type);go('editor',nd.id);toast(dn(nd.type)+tr(' created with the same data',' أُنشئت بنفس البيانات'));break}
+    case 'dup':{const nd=clone(d);Object.assign(nd,{id:uid(),number:'',fp:'',status:'draft',parentId:null,date:TODAY,history:[]});DB.docs.push(nd);log(nd,'duplicated',d.number||'draft');go('editor',nd.id);toast(tr('Copy created as a draft','أُنشئت نسخة كمسودة'));break}
     case 'pdf':{const old=document.title;document.title=(DOCS[d.type].n+' '+(d.number||'draft')).replace(/[\/\\]/g,'-');window.print();setTimeout(()=>document.title=old,500);break}
     case 'email':emailModal(d);break;
     case 'sendmail':log(d,'emailed',$('#m-to').value);$('#modal').hidden=true;render();toast(tr('Recorded in the history (demo, not sent)','سُجّل في السجل (تجريبي، لم يُرسل)'));break;
-    case 'closemodal':$('#modal').hidden=true;break;
+    case 'closemodal':$('#modal').hidden=true;newDlg=null;break;
     case 'verify':vQuery=$('#vq').value.trim();doVerify();break;
+    case 'backupnow':DB.backups.unshift({at:new Date().toISOString(),kind:'manual',size:(4.1+DB.docs.length*0.02).toFixed(1)+' MB',primary:true,offsite:true});audit('backup',tr('Cloud + off-site copy','سحابة + نسخة خارجية'));render();toast(tr('Backup saved in 2 places','تم حفظ النسخة في مكانين'));break;
+    case 'restoretest':DB.restoreTest=new Date().toISOString();audit('restore',tr('Latest backup restored to a test copy','استعادة آخر نسخة إلى نسخة اختبار'));render();toast(tr('Restore test passed: the latest backup opens correctly','نجح اختبار الاستعادة: آخر نسخة تعمل بشكل صحيح'));break;
+    case 'invite':inviteModal();break;
+    case 'sendinvite':{const n=$('#i-name').value.trim(),em=$('#i-email').value.trim().toLowerCase(),r=$('#i-role').value;
+      if(!n||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){toast(tr('Enter a name and a valid email','أدخل الاسم وبريدًا صحيحًا'));break}
+      DB.users.push({id:uid(),name:n,email:em,role:r,title:roleName(r),mfa:false,invited:true});audit('invite',em);$('#modal').hidden=true;render();toast(tr('Invitation recorded (demo)','تم تسجيل الدعوة (تجريبي)'));break}
     case 'newclient':editClient={id:'',name:'',address:'',taxLabel:'Tax ID',taxId:'',contact:'',country:''};render();break;
     case 'cancelclient':editClient=null;render();break;
     case 'saveclient':{if(!editClient.name.trim()){toast(tr('Enter the company name first','أدخل اسم الشركة أولًا'));break}
@@ -1098,13 +1339,16 @@ document.addEventListener('click',ev=>{
       if(editProduct.id){Object.assign(DB.products.find(p=>p.id===editProduct.id),editProduct)}else{editProduct.id=uid();DB.products.push(editProduct)}editProduct=null;render();toast(tr('Product saved','تم حفظ المنتج'));break}
   }});
 function doVerify(){const q=vQuery.replace(/\s+/g,'').toUpperCase();const d=DB.docs.find(x=>x.number&&x.number.toUpperCase()===q);vResult=d?d.id:(q?'none':null);render()}
+function syncGroup(){DB.companies.forEach(c=>{const g=DB.clients.find(x=>x.group===c.id);if(g){g.name=c.name;g.address=c.address;g.taxId=c.trn;g.contact=c.email}})}
+let setT;
 document.addEventListener('input',ev=>{
   const x=ev.target,ds=x.dataset;
   if(x.id==='fQ'){docFilter.q=x.value;const pos=x.selectionStart;render();const n=$('#fQ');n.focus();n.setSelectionRange(pos,pos);return}
+  if(x.id==='l-code'){x.value=x.value.replace(/\D/g,'').slice(0,6);return}
   if(ds.c!=null&&editClient){editClient[ds.c]=x.value;return}
   if(ds.p!=null&&editProduct){editProduct[ds.p]=x.value;return}
-  if(ds.co!=null){DB.company[ds.co]=x.value;save();return}
-  if(ds.b!=null){DB.company.bank[ds.b]=x.value;save();return}
+  if(ds.co!=null){coOf(DB,setCo)[ds.co]=x.value;syncGroup();clearTimeout(setT);setT=setTimeout(()=>audit('settings',coName(setCo)),1500);save();return}
+  if(ds.b!=null){coOf(DB,setCo).bank[ds.b]=x.value;clearTimeout(setT);setT=setTimeout(()=>audit('settings',coName(setCo)),1500);save();return}
   const d=cur();if(!d||view!=='editor')return;
   if(ds.k&&x.type!=='checkbox'&&x.tagName!=='SELECT'){const p=ds.k.split('.');let o=d;for(let i=0;i<p.length-1;i++)o=o[p[i]];o[p[p.length-1]]=x.value;preview();return}
   if(ds.it){const box=x.closest('.item'),i=+box.dataset.i;d.items[i][ds.it]=x.value;const tt=box.querySelector('.item-total');if(tt)tt.textContent=mf(num(d.items[i].qty)*num(d.items[i].price));preview()}
@@ -1112,19 +1356,73 @@ document.addEventListener('input',ev=>{
 document.addEventListener('change',ev=>{
   const x=ev.target,ds=x.dataset;
   if(x.id==='fStatus'){docFilter.status=x.value;render();return}
-  if(x.type==='file'&&x.files[0]){const k=x.id==='f-logo'?'logo':'logoLight';const r=new FileReader();r.onload=()=>{DB.company[k]=r.result;render();toast(tr('Logo updated on every document','تم تحديث الشعار في جميع المستندات'))};r.readAsDataURL(x.files[0]);return}
+  if(x.id==='n-type'&&newDlg){newDlg.type=x.value;renderNew();return}
+  if(x.type==='file'&&x.files[0]){const k=x.id==='f-logo'?'logo':'logoLight';const r=new FileReader();r.onload=()=>{coOf(DB,setCo)[k]=r.result;audit('settings',coName(setCo));render();toast(tr('Logo updated on this company’s documents','تم تحديث الشعار في مستندات هذه الشركة'))};r.readAsDataURL(x.files[0]);return}
   const d=cur();if(!d||view!=='editor')return;
-  if(x.id==='e-client'){const c=DB.clients.find(c=>c.id===x.value);d.clientId=c?c.id:'';if(c)d.buyer={name:c.name,address:c.address,taxLabel:c.taxLabel,taxId:c.taxId,contact:c.contact};$('#edForm').innerHTML=edForm(d);preview();return}
+  if(x.id==='e-client'){const c=DB.clients.find(c=>c.id===x.value);d.clientId=c?c.id:'';if(c)d.buyer={name:c.name,address:c.address,taxLabel:c.taxLabel,taxId:c.taxId,contact:c.contact};render();return}
   if(x.id==='e-addp'&&x.value){const p=DB.products.find(p=>p.id===x.value);d.items.push(itemFrom(p,27));x.value='';$('#items').innerHTML=itemsHTML(d);preview();return}
   if(ds.k&&(x.type==='checkbox'||x.tagName==='SELECT')){const p=ds.k.split('.');let o=d;for(let i=0;i<p.length-1;i++)o=o[p[i]];o[p[p.length-1]]=x.type==='checkbox'?x.checked:x.value;
     if(ds.k==='type'){if(x.value==='loi'&&d.layout==='classic')d.layout='letter';render();return}
     preview()}
 });
 document.addEventListener('keydown',ev=>{
-  if(ev.key==='Escape'){if(!$('#modal').hidden)$('#modal').hidden=true;if(menu){menu='';renderTop()}}
+  if(ev.key==='Escape'){if(!$('#modal').hidden){$('#modal').hidden=true;newDlg=null}if(menu){menu='';renderTop()}}
   if(ev.key==='Enter'&&ev.target.id==='vq'){vQuery=ev.target.value.trim();doVerify()}});
 
-render();
+
+/* ================= self-running demo ================= */
+const TOUR={on:false,paused:false,stop:false,step:0,total:0,el:null};
+const wait=ms=>new Promise((res,rej)=>{let left=ms;const t=setInterval(()=>{if(TOUR.stop){clearInterval(t);rej('stop');return}if(!TOUR.paused)left-=50;if(left<=0){clearInterval(t);res()}},50)});
+const q=s=>document.querySelector(s);
+async function until(sel,ms=3000){const t0=Date.now();while(!q(sel)){if(Date.now()-t0>ms)throw 'missing '+sel;await wait(80)}return q(sel)}
+function ringTo(el,sel){TOUR.el=el;TOUR.sel=sel||'';if(el)el.scrollIntoView({block:'center',behavior:'smooth'})}
+function placeRing(){const r=q('#tourRing'),c=q('#tourCursor');if(!TOUR.on){return}
+  if(TOUR.el&&!document.contains(TOUR.el)&&TOUR.sel)TOUR.el=q(TOUR.sel);
+  if(TOUR.el&&document.contains(TOUR.el)){const b=TOUR.el.getBoundingClientRect();r.hidden=false;r.style.cssText=`left:${b.left-6}px;top:${b.top-6}px;width:${b.width+12}px;height:${b.height+12}px`}else r.hidden=true;
+  requestAnimationFrame(placeRing)}
+async function point(sel){const el=await until(sel);ringTo(el,sel);await wait(650);const b=el.getBoundingClientRect(),c=q('#tourCursor');c.hidden=false;c.style.left=(b.left+Math.min(b.width/2,60))+'px';c.style.top=(b.top+b.height/2)+'px';await wait(450);return el}
+async function tap(sel){const el=await point(sel);q('#tourCursor').classList.add('press');await wait(180);q('#tourCursor').classList.remove('press');el.click();await wait(350);return el}
+async function type(sel,text){const el=await point(sel);el.focus();el.value='';for(const ch of text){el.value+=ch;el.dispatchEvent(new Event('input',{bubbles:true}));await wait(55)}await wait(250);return el}
+async function pick(sel,val){const el=await point(sel);el.value=val;el.dispatchEvent(new Event('change',{bubbles:true}));await wait(500)}
+function say(en,ar,i){TOUR.step=i;const bar=q('#tourBar');bar.querySelector('.tour-cap').textContent=tr(en,ar);bar.querySelector('.tour-n').textContent=`${i} / ${TOUR.total}`;bar.querySelector('.tour-prog i').style.width=(i/TOUR.total*100)+'%'}
+const STEPS=[
+ [async()=>{say('Only authorized people can get in. Each person signs in with their own work email and password.','يدخل المصرّح لهم فقط. كل شخص يسجّل الدخول ببريد العمل وكلمة المرور الخاصة به.',1);await type('#l-email','teste@sevengt.com');await type('#l-pass','teste123');await tap('#loginForm button[type=submit]')}],
+ [async()=>{say('Second step: a 6-digit code from the phone app. A stolen password alone is not enough.','الخطوة الثانية: رمز من 6 أرقام من تطبيق الهاتف. كلمة المرور المسروقة وحدها لا تكفي.',2);await type('#l-code','123456');await wait(400);await tap('#loginForm button[type=submit]');await wait(900)}],
+ [async()=>{say('Every document from both Seven companies in one place: company, client, product, date, amount and status, without opening any file.','كل مستندات شركتي سفن في مكان واحد: الشركة والعميل والمنتج والتاريخ والمبلغ والحالة دون فتح أي ملف.',3);await point('.doctbl');await wait(3200)}],
+ [async()=>{say('Filter by company. Each one has its own colour and code: SGT in red, ST in teal.','التصفية حسب الشركة. لكل شركة لونها ورمزها: SGT بالأحمر وST بالأخضر المزرق.',4);await tap('[data-fco="stl"]');await wait(1800);await tap('[data-fco="sgt"]');await wait(1800);await tap('[data-fco="all"]')}],
+ [async()=>{say('Documents between the two Seven companies are tagged IC and can be listed on their own.','المستندات بين شركتي سفن تحمل علامة IC ويمكن عرضها وحدها.',5);await tap('[data-act="ictoggle"]');await wait(2600);await tap('[data-act="ictoggle"]')}],
+ [async()=>{say('To create a document, the first question is: which company is issuing it? There is no default, so nobody issues under the wrong name.','عند إنشاء مستند، السؤال الأول: أي شركة تُصدره؟ لا يوجد اختيار افتراضي حتى لا يصدر باسم خاطئ.',6);await tap('[data-act="newdoc"]');await point('.cocards');await wait(2600);await tap('[data-pickco="stl"]');await pick('#n-type','proforma');await wait(900);await tap('[data-act="createdoc"]');await wait(900)}],
+ [async()=>{say('The editor always shows which company is issuing. Numbering is separate for each company.','يعرض المحرر دائمًا الشركة المُصدِرة. الترقيم منفصل لكل شركة.',7);await point('.coband');await wait(2800)}],
+ [async()=>{say('Here the client is the other Seven company. The system flags it as a document between group companies.','هنا العميل هو شركة سفن الأخرى. يميّز النظام المستند كمستند بين شركات المجموعة.',8);await pick('#e-client','g-sgt');await point('.icband');await wait(2800)}],
+ [async()=>{say('Products come from the catalogue. The document updates live, and long documents continue on a new A4 page.','المنتجات من الكتالوج. يتحدّث المستند فورًا، والمستندات الطويلة تستمر في صفحة A4 جديدة.',9);await pick('#e-addp','p1');await pick('#e-addp','p2');await point('#sheet');await wait(2400)}],
+ [async()=>{say('Six layouts in Seven’s colours. The team chooses the one it prefers.','ستة تصاميم بألوان سفن. يختار الفريق ما يفضّله.',10);await tap('.thumb[data-l="bold"]');await wait(1500);await tap('.thumb[data-l="exec"]');await wait(1500);await tap('.thumb[data-l="letter"]');await wait(1200)}],
+ [async()=>{say('On approval the document gets its official number, is locked and archived with a digital fingerprint.','عند الموافقة يحصل المستند على رقمه الرسمي ويُقفل ويُؤرشف ببصمة رقمية.',11);await tap('[data-act="issue"]');await wait(1200);await point('.page-h h1');await wait(1600);await point('.arch');await wait(2600)}],
+ [async()=>{say('Administrators see the backups: every night, a copy in the cloud and another off-site.','يرى المسؤولون النسخ الاحتياطية: كل ليلة نسخة في السحابة وأخرى خارجية.',12);await tap('.tab[data-nav="security"]');await wait(600);await point('.kpis');await wait(2200);await tap('[data-act="backupnow"]');await wait(1500)}],
+ [async()=>{say('Who has access, the protection layers, and a log of every action, including blocked sign-in attempts.','من يملك صلاحية الدخول، وطبقات الحماية، وسجل لكل إجراء بما فيه محاولات الدخول المحظورة.',13);await point('.layers');await wait(2600);if(q('.tbl tr.warnrow')){await point('.tbl tr.warnrow');await wait(2400)}}],
+ [async()=>{say('Buyers scan the QR code on the document to confirm it is genuine. A fake number is rejected.','يمسح المشتري رمز QR على المستند للتأكد من صحته. ويُرفض أي رقم مزيف.',14);await tap('.tab[data-nav="verify"]');await tap('[data-try]');await point('.vres');await wait(2400);await tap('[data-try="777/INV_SGT/X/2026"]');await point('.vres');await wait(2400)}],
+ [async()=>{say('End of the demo. The system is now yours to explore.','نهاية العرض. يمكنك الآن استكشاف النظام بنفسك.',15);await tap('.tab[data-nav="documents"]');TOUR.el=null;TOUR.sel='';await wait(800)}]];
+async function startTour(){if(TOUR.on)return;
+  const lang=DB.ui.lang;DB=seed();DB.ui.lang=lang;view='documents';loginStep='pass';loginErr='';pendingUser=null;docFilter={co:'all',ic:false,type:'all',status:'all',q:''};$('#modal').hidden=true;newDlg=null;
+  Object.assign(TOUR,{on:true,paused:false,stop:false,step:0,total:STEPS.length});
+  document.body.classList.add('touring');q('#tourBar').hidden=false;q('#tourEnd').hidden=true;syncTourBtns();render();requestAnimationFrame(placeRing);
+  try{for(const [fn] of STEPS){await fn()}q('#tourEnd').hidden=false;q('#tourBar .tour-ctl').hidden=true}
+  catch(x){if(x!=='stop')console.warn('tour',x);endTour()}
+  q('#tourCursor').hidden=true;q('#tourRing').hidden=true;TOUR.el=null}
+function endTour(){TOUR.stop=true;TOUR.on=false;document.body.classList.remove('touring');q('#tourBar').hidden=true;q('#tourCursor').hidden=true;q('#tourRing').hidden=true;q('#tourBar .tour-ctl').hidden=false}
+function syncTourBtns(){const b=q('[data-act="tourpause"]');if(b)b.textContent=TOUR.paused?tr('Play','تشغيل'):tr('Pause','إيقاف مؤقت')}
+document.body.insertAdjacentHTML('beforeend',`<div id="tourRing" class="tour-ring" hidden></div><div id="tourCursor" class="tour-cursor" hidden></div>
+ <div id="tourBar" class="tour-bar" hidden role="status" aria-live="polite"><div class="tour-prog"><i></i></div><div class="tour-in">
+  <span class="tour-n"></span><p class="tour-cap"></p>
+  <div class="tour-ctl"><button type="button" class="btn sm" data-act="tourpause"></button><button type="button" class="btn sm ghost" data-act="tourstop"></button></div>
+  <div class="tour-ctl" id="tourEnd" hidden><button type="button" class="btn sm primary" data-act="tourreplay"></button><button type="button" class="btn sm" data-act="tourstop"></button></div></div></div>`);
+function tourLabels(){q('[data-act="tourpause"]').textContent=TOUR.paused?tr('Play','تشغيل'):tr('Pause','إيقاف مؤقت');document.querySelectorAll('[data-act="tourstop"]').forEach(b=>b.textContent=TOUR.on?tr('Stop and explore','إيقاف واستكشاف'):tr('Close','إغلاق'));q('[data-act="tourreplay"]').textContent=tr('Watch again','مشاهدة مرة أخرى')}
+document.addEventListener('click',ev=>{const b=ev.target.closest('[data-act^="tour"]');if(!b||!ev.isTrusted&&b.dataset.act!=='tourstart')return;
+  const a=b.dataset.act;if(a==='tourstart'){startTour();tourLabels()}else if(a==='tourpause'){TOUR.paused=!TOUR.paused;tourLabels()}else if(a==='tourstop'){endTour()}else if(a==='tourreplay'){endTour();setTimeout(()=>{TOUR.stop=false;startTour();tourLabels()},120)}},true);
+document.addEventListener('click',ev=>{if(TOUR.on&&ev.isTrusted&&!ev.target.closest('#tourBar,[data-act^="tour"]')){TOUR.paused=true;tourLabels()}},true);
+document.addEventListener('keydown',ev=>{if(TOUR.on&&ev.key==='Escape')endTour()});
+
+render();tourLabels();
+if(location.hash==='#demo')setTimeout(()=>{startTour();tourLabels()},600);
 })();
 </script>
 
